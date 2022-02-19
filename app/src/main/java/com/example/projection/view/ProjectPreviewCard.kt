@@ -9,19 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
-import com.example.projection.MainActivity
-import com.example.projection.data.ProjectPreview
-import com.example.projection.data.ProjectPreviewSampleData
+import com.example.projection.data.model.ProjectPreview
+import com.example.projection.data.model.ProjectPreviewSampleData
 
 @Composable
-fun ProjectCard(preview: ProjectPreview) {
+fun ProjectPreviewCard(preview: ProjectPreview) {
     Card(
         elevation = 12.dp,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Column(
-            modifier = Modifier.padding(8.dp)
-        ) {
+        Column(modifier = Modifier.padding(8.dp)) {
             Text(
                 text = preview.title,
                 style = MaterialTheme.typography.subtitle2
@@ -38,18 +35,5 @@ fun ProjectCard(preview: ProjectPreview) {
 @Preview
 @Composable
 fun PreviewProjectCard() {
-    ProjectCard(ProjectPreviewSampleData.projectPreviewSample.first())
-}
-
-class SampleViewModel() : ViewModel() {
-
-    var inputState by mutableStateOf("")
-}
-
-@Composable
-fun SampleComposable(viewModel: SampleViewModel) {
-
-    val inputState = viewModel.inputState
-
-    Text(text = inputState)
+    ProjectPreviewCard(ProjectPreviewSampleData.projectPreviewSample.first())
 }

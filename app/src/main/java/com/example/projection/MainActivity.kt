@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.projection.data.ProjectPreviewSampleData
 import com.example.projection.ui.theme.ProjectionTheme
 import com.example.projection.view.ProjectList
 

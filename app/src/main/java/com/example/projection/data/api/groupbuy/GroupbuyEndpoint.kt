@@ -1,9 +1,9 @@
-package com.example.projection.data
+package com.example.projection.data.api.groupbuy
 
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 
-interface ProjectionEndpoint {
+interface GroupbuyEndpoint {
 
     @GET("groupbuys")
     fun getGroupbuys(): Flowable<ProjectsResponse>

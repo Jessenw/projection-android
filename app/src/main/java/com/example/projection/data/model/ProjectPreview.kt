@@ -1,4 +1,4 @@
-package com.example.projection.data
+package com.example.projection.data.model
 
 data class ProjectPreview(
     val id: String, // TODO: This will be updated to an int
