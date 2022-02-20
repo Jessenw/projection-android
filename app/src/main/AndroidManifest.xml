@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projection">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projection"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.ProjectShowActivity"
+            android:exported="false"
+            android:label="@string/title_activity_project_show"
+            android:theme="@style/Theme.Projection" />
+        <activity
+            android:name=".view.ProjectIndexActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

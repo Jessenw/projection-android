@@ -49,6 +49,9 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
 
+    // Navigation
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+
     // Compose
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
@@ -70,6 +73,8 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
 
     // Test
     testImplementation 'junit:junit:4.13.2'

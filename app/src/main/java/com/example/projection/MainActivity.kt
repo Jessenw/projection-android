@@ -4,11 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.ui.Modifier
 import com.example.projection.ui.theme.ProjectionTheme
-import com.example.projection.view.ProjectList
+import com.example.projection.view.screen.RootScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -22,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ProjectList()
+                    RootScreen()
                 }
             }
         }
