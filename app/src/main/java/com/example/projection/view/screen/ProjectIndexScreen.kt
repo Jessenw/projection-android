@@ -6,5 +6,5 @@ import com.example.projection.view.ProjectList
 
 @Composable
 fun ProjectIndexScreen(navController: NavHostController) {
-    ProjectList()
+    ProjectList(navController)
 }

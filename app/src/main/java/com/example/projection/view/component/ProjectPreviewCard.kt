@@ -1,22 +1,29 @@
-package com.example.projection.view
+package com.example.projection.view.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
 import com.example.projection.data.model.ProjectPreview
 import com.example.projection.data.model.ProjectPreviewSampleData
+import com.example.projection.view.navigation.Route
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ProjectPreviewCard(preview: ProjectPreview) {
+fun ProjectPreviewCard(
+    navController: NavHostController,
+    preview: ProjectPreview
+) {
     Card(
         elevation = 12.dp,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { navController.navigate(Route.ProjectShow.route) }
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
@@ -30,10 +37,4 @@ fun ProjectPreviewCard(preview: ProjectPreview) {
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewProjectCard() {
-    ProjectPreviewCard(ProjectPreviewSampleData.projectPreviewSample.first())
 }
