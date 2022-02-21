@@ -3,6 +3,7 @@ package com.example.projection.view.screen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,31 +27,47 @@ fun RootScreen() {
         Route.Profile
     )
 
-    Scaffold(bottomBar = {
-        BottomNavigation {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentDestination = navBackStackEntry?.destination
-
-            navItems.forEach { route ->
-                BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
-                    label = { Text(stringResource(route.resourceId)) },
-                    selected = currentDestination?.hierarchy?.any { it.route == route.route } == true,
-                    onClick = {
-                        navController.navigate(route.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-
-                            // Avoid appending same destination when reselecting
-                            // the same item
-                            launchSingleTop = true
-                            restoreState = true
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("App") },
+                navigationIcon = if (navController.previousBackStackEntry != null) {
+                    {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = "Back"
+                            )
                         }
                     }
-                )
+                } else { null }
+            )
+        },
+        bottomBar = {
+            BottomNavigation {
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentDestination = navBackStackEntry?.destination
+
+                navItems.forEach { route ->
+                    BottomNavigationItem(
+                        icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                        label = { Text(stringResource(route.resourceId)) },
+                        selected = currentDestination?.hierarchy?.any { it.route == route.route } == true,
+                        onClick = {
+                            navController.navigate(route.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+
+                                // Avoid appending same destination when reselecting
+                                // the same item
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    )
+                }
             }
-        }
     }) { innerPadding ->
         NavHost(
             navController,
