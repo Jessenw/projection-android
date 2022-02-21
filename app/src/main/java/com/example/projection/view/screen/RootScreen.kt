@@ -20,37 +20,23 @@ import com.example.projection.view.navigation.Route
 @Composable
 fun RootScreen() {
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
 
     // Routes available on bottom navigation
-    val navItems = listOf(
+    val bottomNavItems = listOf(
         Route.ProjectIndex,
+        Route.SavedIndex,
         Route.Profile
     )
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("App") },
-                navigationIcon = if (navController.previousBackStackEntry != null) {
-                    {
-                        IconButton(onClick = { navController.navigateUp() }) {
-                            Icon(
-                                imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Back"
-                            )
-                        }
-                    }
-                } else { null }
-            )
-        },
+//        topBar = { TopAppBar(title = { Text("App") }) },
         bottomBar = {
             BottomNavigation {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentDestination = navBackStackEntry?.destination
-
-                navItems.forEach { route ->
+                bottomNavItems.forEach { route ->
                     BottomNavigationItem(
-                        icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                        icon = { route.icon?.let { Icon(it, contentDescription = null) } },
                         label = { Text(stringResource(route.resourceId)) },
                         selected = currentDestination?.hierarchy?.any { it.route == route.route } == true,
                         onClick = {
@@ -76,6 +62,7 @@ fun RootScreen() {
         ) {
             composable(Route.ProjectIndex.route) { ProjectIndexScreen(navController) }
             composable(Route.ProjectShow.route) { ProjectShowScreen(navController) }
+            composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
             composable(Route.Profile.route) { ProfileScreen(navController) }
         }
     }

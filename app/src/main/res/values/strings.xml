@@ -2,8 +2,13 @@
     <string name="app_name">Projection</string>
     <string name="title_activity_project_show">ProjectShowActivity</string>
 
+    <!-- Project screen -->
+    <string name="groupbuy">Groupbuy</string>
+    <string name="interest_check">Interest check</string>
+
     <!-- Navigation -->
     <string name="profile">Profile</string>
     <string name="project_index">Projects</string>
     <string name="project_show">Project</string>
+    <string name="saved_index">Saved</string>
 </resources>
