@@ -1,10 +1,10 @@
 package com.example.projection.view.screen
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.example.projection.view.ProjectList
 
 @Composable
-fun ProjectIndexScreen(navController: NavHostController) {
-    ProjectList(navController)
+fun SavedIndexScreen(navController: NavHostController) {
+    Text("Saved index screen")
 }

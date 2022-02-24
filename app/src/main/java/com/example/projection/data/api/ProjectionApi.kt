@@ -1,6 +1,8 @@
 package com.example.projection.data.api
 
+import com.example.projection.data.api.ProjectionApi.apiBuilder
 import com.example.projection.data.api.groupbuy.GroupbuyEndpoint
+import com.example.projection.data.api.interestcheck.InterestCheckEndpoint
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,13 +19,19 @@ object ProjectionApi {
     private val httpClient = OkHttpClient().newBuilder()
         .addInterceptor(logging)
 
-    val requestApi: GroupbuyEndpoint by lazy {
+    val apiBuilder: Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL_LOCAL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(httpClient.build())
             .build()
-            .create(GroupbuyEndpoint::class.java)
+
+    val requestApi: GroupbuyEndpoint by lazy {
+        apiBuilder.create(GroupbuyEndpoint::class.java)
+    }
+
+    val requestInterestCheckApi: InterestCheckEndpoint by lazy {
+        apiBuilder.create(InterestCheckEndpoint::class.java)
     }
 }

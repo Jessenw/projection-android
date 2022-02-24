@@ -15,4 +15,13 @@ class ProjectionRepository {
             .onErrorReturn { _ ->
                 emptyList()
             }
+
+    fun requestInterestCheck(): Flowable<List<ProjectPreview>> =
+        ProjectionApi.requestInterestCheckApi
+            .getInterestChecks()
+            .map { it.projects }
+            .subscribeOn(Schedulers.io())
+            .onErrorReturn { _ ->
+                emptyList()
+            }
 }

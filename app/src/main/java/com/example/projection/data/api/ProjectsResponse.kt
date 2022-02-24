@@ -1,4 +1,4 @@
-package com.example.projection.data.api.groupbuy
+package com.example.projection.data.api
 
 import com.example.projection.data.model.ProjectPreview
 
