@@ -1,4 +1,4 @@
-package com.example.projection.view.screen
+package com.example.projection.view.screen.projectindex
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Tab
@@ -27,13 +27,24 @@ fun ProjectIndexScreen(navController: NavHostController) {
         }
 
         when (tabSelectedState) {
-            0 -> ProjectList(navController)
-            1 -> InterestCheckPlaceholderScreen(navController)
+            0 -> GroupbuyIndexScreen(navController)
+            1 -> InterestCheckIndexScreen(navController)
         }
     }
 }
 
 @Composable
-fun InterestCheckPlaceholderScreen(navController: NavHostController) {
-    Text("Interest check screen")
+fun InterestCheckIndexScreen(
+    navController: NavHostController,
+    viewModel: InterestCheckIndexViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
+    ProjectList(navController, viewModel)
+}
+
+@Composable
+fun GroupbuyIndexScreen(
+    navController: NavHostController,
+    viewModel: GroupbuyIndexViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
+    ProjectList(navController, viewModel)
 }

@@ -8,13 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.projection.MainActivityViewModel
 import com.example.projection.view.component.ProjectPreviewCard
+import com.example.projection.view.component.viewmodel.ListViewModel
 
 @Composable
 fun ProjectList(
     navController: NavHostController,
-    viewModel: MainActivityViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: ListViewModel
 ) {
     val projects = viewModel.dataSource.observeAsState()
 
