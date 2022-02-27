@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.example.projection.R
-import com.example.projection.view.ProjectList
+import com.example.projection.view.component.ProjectList
 
 @Composable
 fun ProjectIndexScreen(navController: NavHostController) {

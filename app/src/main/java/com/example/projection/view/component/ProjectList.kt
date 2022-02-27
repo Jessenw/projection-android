@@ -1,4 +1,4 @@
-package com.example.projection.view
+package com.example.projection.view.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.projection.view.component.ProjectPreviewCard
 import com.example.projection.view.component.viewmodel.ListViewModel
 
 @Composable
