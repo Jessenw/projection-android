@@ -14,6 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.projection.view.navigation.Route
 import com.example.projection.view.screen.projectindex.ProjectIndexScreen
+import com.example.projection.view.screen.projectshow.ProjectShowScreen
 
 @Composable
 fun RootScreen() {
@@ -29,7 +30,6 @@ fun RootScreen() {
     )
 
     Scaffold(
-//        topBar = { TopAppBar(title = { Text("App") }) },
         bottomBar = {
             BottomNavigation {
                 bottomNavItems.forEach { route ->
