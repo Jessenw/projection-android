@@ -6,14 +6,12 @@ import androidx.lifecycle.toLiveData
 import com.example.projection.data.model.ProjectPreview
 import com.example.projection.data.repository.ProjectionRepository
 import com.example.projection.view.component.viewmodel.ListViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 class SavedIndexViewModel(
-    repository: ProjectionRepository = ProjectionRepository()
+    repository: ProjectionRepository = ProjectionRepository(),
 ) : ListViewModel, ViewModel() {
 
+    // TODO: Update to retrieve saved projects from database
     override val dataSource: LiveData<List<ProjectPreview>> =
-        repository.requestSaved()
-            .observeOn(AndroidSchedulers.mainThread())
-            .toLiveData()
+        repository.requestInterestCheck().toLiveData()
 }
