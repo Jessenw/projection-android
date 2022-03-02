@@ -27,7 +27,7 @@ object ProjectionApi {
             .client(httpClient.build())
             .build()
 
-    val requestApi: GroupbuyEndpoint by lazy {
+    val requestGroupbuyEndpoint: GroupbuyEndpoint by lazy {
         apiBuilder.create(GroupbuyEndpoint::class.java)
     }
 

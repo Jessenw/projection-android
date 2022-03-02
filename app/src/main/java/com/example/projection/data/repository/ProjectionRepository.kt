@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class ProjectionRepository {
 
     fun requestGroupbuys(): Flowable<List<ProjectPreview>> =
-        ProjectionApi.requestApi
+        ProjectionApi.requestGroupbuyEndpoint
             .getGroupbuys()
             .map { it.projects }
             .subscribeOn(Schedulers.io())
