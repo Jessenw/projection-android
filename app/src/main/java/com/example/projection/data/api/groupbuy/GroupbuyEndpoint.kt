@@ -1,5 +1,6 @@
 package com.example.projection.data.api.groupbuy
 
+import com.example.projection.data.api.ProjectsResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 
