@@ -48,7 +48,6 @@ fun ProjectPreviewCard(
         ) {
             // Weighting the text column allows the icon to have layout priority
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = "Monkey", modifier = Modifier.weight(1f))
                 ProjectPreviewCardText(
                     preview.title,
                     MaterialTheme.typography.subtitle2
