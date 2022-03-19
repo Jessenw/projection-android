@@ -34,7 +34,11 @@ fun ProjectPreviewCard(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Weighting the text column allows the icon to have layout priority
-            Column(modifier = Modifier.weight(1f).padding(4.dp)) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(4.dp)
+            ) {
                 ProjectPreviewCardText(
                     preview.title,
                     MaterialTheme.typography.subtitle2
