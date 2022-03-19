@@ -16,19 +16,6 @@ import androidx.navigation.NavHostController
 import com.example.projection.data.model.ProjectPreview
 import com.example.projection.view.navigation.Route
 
-@Composable
-fun ProjectPreviewCardText(
-    text: String,
-    style: TextStyle
-) {
-    Text(
-        text = text,
-        style = style,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis
-    )
-}
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProjectPreviewCard(
@@ -47,7 +34,7 @@ fun ProjectPreviewCard(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Weighting the text column allows the icon to have layout priority
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1f).padding(4.dp)) {
                 ProjectPreviewCardText(
                     preview.title,
                     MaterialTheme.typography.subtitle2
@@ -76,4 +63,17 @@ fun ProjectPreviewCard(
             }
         }
     }
+}
+
+@Composable
+fun ProjectPreviewCardText(
+    text: String,
+    style: TextStyle
+) {
+    Text(
+        text = text,
+        style = style,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
+    )
 }
