@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "project_preview")
 data class ProjectPreviewRow(
     @PrimaryKey val id: Int,
-    @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "author") val author: String?,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "author") val author: String,
     @ColumnInfo(name = "saved") val saved: Boolean
 )
