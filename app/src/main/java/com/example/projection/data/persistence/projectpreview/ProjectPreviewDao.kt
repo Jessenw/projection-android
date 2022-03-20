@@ -1,5 +1,4 @@
 package com.example.projection.data.persistence.projectpreview
-import androidx.paging.PagingSource
 import androidx.room.*
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
@@ -9,7 +8,7 @@ interface ProjectPreviewDao {
     @Query("SELECT * FROM project_preview")
     fun getAll(): Flowable<List<ProjectPreviewRow>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(project: ProjectPreviewRow): Completable
 
     @Delete

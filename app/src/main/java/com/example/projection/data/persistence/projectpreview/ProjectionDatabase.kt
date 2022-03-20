@@ -5,5 +5,5 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [ProjectPreviewRow::class], version = 1)
 abstract class ProjectionDatabase : RoomDatabase() {
-    abstract val projectPreviews: ProjectPreviewDao
+    abstract fun projectPreviews(): ProjectPreviewDao
 }

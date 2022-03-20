@@ -29,7 +29,6 @@ fun RootScreen() {
     )
 
     Scaffold(
-//        topBar = { TopAppBar(title = { Text("App") }) },
         bottomBar = {
             BottomNavigation {
                 bottomNavItems.forEach { route ->
