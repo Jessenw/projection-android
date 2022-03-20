@@ -23,7 +23,7 @@ fun ProjectList(
     ) {
         projects.value?.let {
             items(it) { project ->
-                ProjectPreviewCard(navController, project)
+                ProjectPreviewCard(navController, project, viewModel)
             }
         }
     }
