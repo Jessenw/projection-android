@@ -44,7 +44,7 @@ class ProjectionRepository(
             }
     }
 
-    fun updateSaved(preview: ProjectPreview) {
+    suspend fun updateSaved(preview: ProjectPreview) {
         database.projectPreviews().insert(
             ProjectPreviewRow.ModelMapper.from(preview))
     }

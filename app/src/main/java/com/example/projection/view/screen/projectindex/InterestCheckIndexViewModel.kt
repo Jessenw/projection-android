@@ -6,6 +6,7 @@ import com.example.projection.ProjectionApp
 import com.example.projection.data.model.ProjectPreview
 import com.example.projection.view.component.viewmodel.ListViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import kotlinx.coroutines.launch
 
 class InterestCheckIndexViewModel(
      application: Application
@@ -19,6 +20,8 @@ class InterestCheckIndexViewModel(
                .toLiveData()
 
      override fun tappedSave(preview: ProjectPreview) {
-          repository.updateSaved(preview)
+          viewModelScope.launch {
+               repository.updateSaved(preview)
+          }
      }
 }

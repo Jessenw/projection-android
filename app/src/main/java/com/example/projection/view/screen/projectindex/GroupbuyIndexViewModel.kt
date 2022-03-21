@@ -2,15 +2,13 @@ package com.example.projection.view.screen.projectindex
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.toLiveData
+import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
 import com.example.projection.data.model.ProjectPreview
 import com.example.projection.data.repository.ProjectionRepository
 import com.example.projection.view.component.viewmodel.ListViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import kotlinx.coroutines.launch
 
 class GroupbuyIndexViewModel(
     application: Application
@@ -24,6 +22,8 @@ class GroupbuyIndexViewModel(
             .toLiveData()
 
     override fun tappedSave(preview: ProjectPreview) {
-        repository.updateSaved(preview)
+        viewModelScope.launch {
+            repository.updateSaved(preview)
+        }
     }
 }

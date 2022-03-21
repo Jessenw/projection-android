@@ -9,7 +9,7 @@ interface ProjectPreviewDao {
     fun getAll(): Flowable<List<ProjectPreviewRow>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(project: ProjectPreviewRow): Completable
+    suspend fun insert(project: ProjectPreviewRow)
 
     @Delete
     fun delete(project: ProjectPreviewRow)
