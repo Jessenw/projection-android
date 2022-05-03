@@ -22,9 +22,9 @@ class SavedIndexViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .toLiveData()
 
-    override fun tappedSave(preview: ProjectPreview) {
+    override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
         viewModelScope.launch {
-            repository.updateSaved(preview)
+            repository.updateSaved(preview, saved)
         }
     }
 }

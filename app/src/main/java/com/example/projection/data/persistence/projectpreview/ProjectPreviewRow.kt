@@ -14,12 +14,12 @@ data class ProjectPreviewRow(
     @ColumnInfo(name = "saved") val saved: Boolean
 ) {
     object ModelMapper {
-        fun from(preview: ProjectPreview): ProjectPreviewRow {
+        fun from(preview: ProjectPreview, saved: Boolean?): ProjectPreviewRow {
             val row = ProjectPreviewRow(
                 preview.id.toFloat().toInt(),
                 preview.title,
                 preview.author,
-                preview.saved
+                saved ?: preview.saved
             )
             Log.d("ModelMapper", "${row.toString()}")
 

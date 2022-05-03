@@ -6,5 +6,5 @@ import com.example.projection.data.model.ProjectPreview
 interface ListViewModel {
     val dataSource: LiveData<List<ProjectPreview>>
 
-    fun tappedSave(preview: ProjectPreview)
+    fun tappedSave(preview: ProjectPreview, saved: Boolean)
 }

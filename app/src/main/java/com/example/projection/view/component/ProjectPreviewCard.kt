@@ -57,7 +57,7 @@ fun ProjectPreviewCard(
                 checked = saved,
                 onCheckedChange = {
                     saved = it
-                    viewModel.tappedSave(preview)
+                    viewModel.tappedSave(preview, saved)
                 },
                 modifier = Modifier.requiredWidth(IntrinsicSize.Min)
             ) {
