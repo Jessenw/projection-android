@@ -1,27 +1,30 @@
 package com.example.projection.view.screen.projectindex
 
-import android.app.Application
 import androidx.lifecycle.*
-import com.example.projection.ProjectionApp
-import com.example.projection.data.model.ProjectPreview
+import com.example.projection.data.remote.groupbuy.GroupbuyRepository
+import com.example.projection.data.remote.model.ProjectPreview
+import com.example.projection.data.remote.model.Result
 import com.example.projection.view.component.viewmodel.ListViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import kotlinx.coroutines.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-class InterestCheckIndexViewModel(
-     application: Application
-): ListViewModel, AndroidViewModel(application) {
+@HiltViewModel
+class InterestCheckIndexViewModel @Inject constructor(
+     private val repository: GroupbuyRepository
+) : ViewModel(), ListViewModel  {
 
-     private val repository = getApplication<ProjectionApp>().projectPreviewRepository
+     private val _dataSource = MutableLiveData<Result<List<ProjectPreview>>>()
+     override var dataSource: LiveData<Result<List<ProjectPreview>>> = _dataSource
 
-     override val dataSource: LiveData<List<ProjectPreview>> =
-          repository.requestInterestCheck()
-               .observeOn(AndroidSchedulers.mainThread())
-               .toLiveData()
+     suspend fun getLatestGroupbuys() {
+          repository.getLatestGroupbuys().collect {
+               _dataSource.value = it
+               dataSource = _dataSource
+          }
+     }
 
      override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
-          viewModelScope.launch {
-               repository.updateSaved(preview, saved)
-          }
+          TODO("Not yet implemented")
      }
 }

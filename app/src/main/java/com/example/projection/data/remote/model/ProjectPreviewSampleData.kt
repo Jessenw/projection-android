@@ -1,4 +1,4 @@
-package com.example.projection.data.model
+package com.example.projection.data.remote.model
 
 object ProjectPreviewSampleData {
     // A list of sample project preview data

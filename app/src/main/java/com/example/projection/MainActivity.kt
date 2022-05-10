@@ -8,7 +8,9 @@ import androidx.compose.material.*
 import androidx.compose.ui.Modifier
 import com.example.projection.ui.theme.ProjectionTheme
 import com.example.projection.view.screen.RootScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.projection.data.model.ProjectPreview
+import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.view.component.viewmodel.ListViewModel
 import com.example.projection.view.navigation.Route
 

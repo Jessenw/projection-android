@@ -59,7 +59,7 @@ fun RootScreen() {
         ) {
             composable(Route.ProjectIndex.route) { ProjectIndexScreen(navController) }
             composable(Route.ProjectShow.route) { ProjectShowScreen(navController) }
-            composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
+            composable(Route.SavedIndex.route) { Text(text = "Saved index") }
             composable(Route.Profile.route) { ProfileScreen(navController) }
         }
     }

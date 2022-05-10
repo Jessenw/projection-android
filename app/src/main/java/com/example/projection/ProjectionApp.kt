@@ -1,17 +1,19 @@
 package com.example.projection
 
 import android.app.Application
-import androidx.room.Room
-import com.example.projection.data.persistence.projectpreview.ProjectionDatabase
-import com.example.projection.data.repository.ProjectionRepository
+import dagger.hilt.android.HiltAndroidApp
 
-class ProjectionApp : Application() {
+@HiltAndroidApp
+class ProjectionApp : Application() { }
 
-    private val database by lazy {
-        Room
-            .databaseBuilder(this, ProjectionDatabase::class.java, "database.db")
-            .build()
-    }
-
-    val projectPreviewRepository by lazy { ProjectionRepository(database) }
-}
+//    private val store = StoreBuilder
+//        .from(Fetcher.ofFlow {  })
+//
+//    private val database by lazy {
+//        Room
+//            .databaseBuilder(this, ProjectionDatabase::class.java, "database.db")
+//            .build()
+//    }
+//
+//    val projectPreviewRepository by lazy { ProjectionRepository(database) }
+//}
