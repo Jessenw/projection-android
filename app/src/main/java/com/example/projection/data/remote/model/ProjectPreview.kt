@@ -10,12 +10,10 @@ data class ProjectPreview(
 )
 
 fun ProjectPreview.toRow(): ProjectPreviewRow {
-    with(this) {
-        return ProjectPreviewRow(
-            id = id.toInt(),
-            title = title,
-            author = author,
-            saved = saved
-        )
-    }
+    return ProjectPreviewRow(
+        id = this.id,
+        title = this.title,
+        author = this.author,
+        saved = this.saved
+    )
 }

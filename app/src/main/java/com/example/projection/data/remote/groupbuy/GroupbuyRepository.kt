@@ -32,25 +32,23 @@ class GroupbuyRepositoryImpl @Inject constructor(
         sourceOfTruth = SourceOfTruth.Companion.of(
             reader = { localDataSource.getAll() },
             writer = { _: String, input: ProjectsResponse ->
+                println("Writing... $input")
+                println("Writing to row... ${input.toRow()}")
                 localDataSource.insert(input.toRow())
             },
             delete = { localDataSource.deleteAll() },
             deleteAll = { localDataSource.deleteAll() }
-//            writer = { _: String, input: ProjectsResponse ->
-//                val latestGroupbuys = input.toRow()
-//                localDataSource.update(latestGroupbuys)
-//            }
         )
     ).build()
 
     override suspend fun getLatestGroupbuys(): Flow<Result<List<ProjectPreview>>> {
-        return flow {
+        return flow<Result<List<ProjectPreview>>> {
             store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh = true))
                 .flowOn(Dispatchers.IO)
                 .collect { response: StoreResponse<List<ProjectPreviewRow>> ->
                     when (response) {
                         is StoreResponse.Loading -> {
-                            print("[Store 4] Loading from ${response.origin} \n")
+                            println("[Store 4] Loading from $response")
                             emit(Result.loading())
                         }
                         is StoreResponse.Error -> {
@@ -59,12 +57,33 @@ class GroupbuyRepositoryImpl @Inject constructor(
                         }
                         is StoreResponse.Data -> {
                             val data = response.value.toProjectPreviewList()
-                            print("[Store 4] Data from ${response.origin} with ${response.value.size} elements \n")
+                            println("[Store 4] Data from ${response.origin} with ${response.value.size} elements")
+                            println("[Store 4] Data: $response")
                             emit(Result.success(data))
                         }
                         is StoreResponse.NoNewData -> emit(Result.success(emptyList()))
                     }
                 }
-        }
+        }.flowOn(Dispatchers.IO)
+//        return flow {
+//            store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh = true))
+//                .flowOn(Dispatchers.IO)
+//                .collect { response ->
+//                    when (response) {
+//                        is StoreResponse.Loading -> {
+//                            println("[Store 4] Loading from $response")
+//
+//                        }
+//                        is StoreResponse.Data -> {
+//                            println("[Store 4] Data from ${response.origin} with ${response.value.size} elements")
+//                            println("[Store 4] Data: $response")
+//                            emit(response.value.toProjectPreviewList())
+//                        }
+//                        is StoreResponse.Error -> {
+//                            println("[Store 4] Error from $response")
+//                        }
+//                    }
+//                }
+//        }
     }
 }

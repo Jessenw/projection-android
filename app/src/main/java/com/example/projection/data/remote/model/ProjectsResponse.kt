@@ -6,5 +6,6 @@ data class ProjectsResponse(
     val projects: List<ProjectPreview>
 )
 
-fun ProjectsResponse.toRow(): List<ProjectPreviewRow> =
-    this.projects.map { it.toRow() }
+fun ProjectsResponse.toRow(): List<ProjectPreviewRow> {
+    return this.projects.map { it.toRow() }
+}
