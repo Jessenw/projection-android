@@ -32,8 +32,6 @@ class GroupbuyRepositoryImpl @Inject constructor(
         sourceOfTruth = SourceOfTruth.Companion.of(
             reader = { localDataSource.getAll() },
             writer = { _: String, input: ProjectsResponse ->
-                println("Writing... $input")
-                println("Writing to row... ${input.toRow()}")
                 localDataSource.insert(input.toRow())
             },
             delete = { localDataSource.deleteAll() },
@@ -65,25 +63,5 @@ class GroupbuyRepositoryImpl @Inject constructor(
                     }
                 }
         }.flowOn(Dispatchers.IO)
-//        return flow {
-//            store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh = true))
-//                .flowOn(Dispatchers.IO)
-//                .collect { response ->
-//                    when (response) {
-//                        is StoreResponse.Loading -> {
-//                            println("[Store 4] Loading from $response")
-//
-//                        }
-//                        is StoreResponse.Data -> {
-//                            println("[Store 4] Data from ${response.origin} with ${response.value.size} elements")
-//                            println("[Store 4] Data: $response")
-//                            emit(response.value.toProjectPreviewList())
-//                        }
-//                        is StoreResponse.Error -> {
-//                            println("[Store 4] Error from $response")
-//                        }
-//                    }
-//                }
-//        }
     }
 }
