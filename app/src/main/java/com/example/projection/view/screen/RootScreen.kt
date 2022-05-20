@@ -54,7 +54,7 @@ fun RootScreen() {
     }) { innerPadding ->
         NavHost(
             navController,
-            startDestination = Route.SavedIndex.route,
+            startDestination = Route.ProjectIndex.route,
             Modifier.padding(innerPadding)
         ) {
             composable(Route.ProjectIndex.route) { ProjectIndexScreen(navController) }

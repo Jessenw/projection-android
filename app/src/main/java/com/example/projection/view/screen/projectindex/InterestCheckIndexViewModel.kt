@@ -1,7 +1,7 @@
 package com.example.projection.view.screen.projectindex
 
 import androidx.lifecycle.*
-import com.example.projection.data.remote.groupbuy.GroupbuyRepository
+import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import com.example.projection.view.component.viewmodel.ListViewModel
@@ -18,7 +18,7 @@ class InterestCheckIndexViewModel @Inject constructor(
      override var dataSource: LiveData<Result<List<ProjectPreview>>> = _dataSource
 
      suspend fun getLatestGroupbuys() {
-          repository.getLatestGroupbuys().collect {
+          repository.getLatestGroupbuys(false).collect {
                _dataSource.value = it
                dataSource = _dataSource
           }

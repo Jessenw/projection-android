@@ -1,17 +1,16 @@
-package com.example.projection.data.remote.groupbuy
+package com.example.projection.data.repository
 
 import com.dropbox.android.external.store4.*
 import com.example.projection.data.local.dao.GroupbuyLocalDataSource
 import com.example.projection.data.local.model.ProjectPreviewRow
 import com.example.projection.data.local.model.toProjectPreviewList
+import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.ProjectsResponse
 import com.example.projection.data.remote.model.toRow
 import com.example.projection.data.remote.model.Result
+import com.example.projection.utilities.Reachability
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -19,7 +18,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 interface GroupbuyRepository {
-    suspend fun getLatestGroupbuys(): Flow<Result<List<ProjectPreview>>>
+    suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
 }
 
 class GroupbuyRepositoryImpl @Inject constructor(
@@ -28,7 +27,7 @@ class GroupbuyRepositoryImpl @Inject constructor(
 ) : GroupbuyRepository {
 
     private val store: Store<String, List<ProjectPreviewRow>> = StoreBuilder.from(
-        fetcher = Fetcher.of { remoteDataSource.getLatestGroupbuys() },
+        fetcher = Fetcher.ofFlow { remoteDataSource.getLatestGroupbuys() },
         sourceOfTruth = SourceOfTruth.Companion.of(
             reader = { localDataSource.getAll() },
             writer = { _: String, input: ProjectsResponse ->
@@ -39,9 +38,9 @@ class GroupbuyRepositoryImpl @Inject constructor(
         )
     ).build()
 
-    override suspend fun getLatestGroupbuys(): Flow<Result<List<ProjectPreview>>> {
+    override suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>> {
         return flow<Result<List<ProjectPreview>>> {
-            store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh = true))
+            store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh))
                 .flowOn(Dispatchers.IO)
                 .collect { response: StoreResponse<List<ProjectPreviewRow>> ->
                     when (response) {

@@ -15,10 +15,4 @@ interface GroupbuyLocalDataSource {
 
     @Query("DELETE FROM groupbuy")
     suspend fun deleteAll()
-
-    @Transaction
-    suspend fun update(projects: List<ProjectPreviewRow>) {
-        deleteAll()
-        insert(projects)
-    }
 }

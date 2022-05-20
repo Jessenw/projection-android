@@ -4,20 +4,20 @@ import android.content.Context
 import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
 import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
-import com.example.projection.data.remote.groupbuy.GroupbuyRepository
-import com.example.projection.data.remote.groupbuy.GroupbuyRepositoryImpl
+import com.example.projection.data.repository.GroupbuyRepository
+import com.example.projection.data.repository.GroupbuyRepositoryImpl
+import com.example.projection.utilities.Reachability
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.InternalCoroutinesApi
+import me.sianaki.flowretrofitadapter.FlowCallAdapterFactory
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -45,6 +45,7 @@ object AppModule {
             .baseUrl("http://10.0.2.2:8000/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(FlowCallAdapterFactory.create())
             .build()
     }
 
