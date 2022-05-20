@@ -81,6 +81,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+    implementation 'com.github.MohammadSianaki:Retrofit2-Flow-Call-Adapter:0.2.0'
 
     // ReactiveX
     implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
