@@ -2,14 +2,10 @@ package com.example.projection.data.repository
 
 import com.dropbox.android.external.store4.*
 import com.example.projection.data.local.dao.GroupbuyLocalDataSource
-import com.example.projection.data.local.model.ProjectPreviewRow
+import com.example.projection.data.local.model.GroupbuyPreviewRow
 import com.example.projection.data.local.model.toProjectPreviewList
 import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
-import com.example.projection.data.remote.model.ProjectPreview
-import com.example.projection.data.remote.model.ProjectsResponse
-import com.example.projection.data.remote.model.toRow
-import com.example.projection.data.remote.model.Result
-import com.example.projection.utilities.Reachability
+import com.example.projection.data.remote.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -26,12 +22,12 @@ class GroupbuyRepositoryImpl @Inject constructor(
     private val remoteDataSource: GroupbuyRemoteDataSource,
 ) : GroupbuyRepository {
 
-    private val store: Store<String, List<ProjectPreviewRow>> = StoreBuilder.from(
+    private val store: Store<String, List<GroupbuyPreviewRow>> = StoreBuilder.from(
         fetcher = Fetcher.ofFlow { remoteDataSource.getLatestGroupbuys() },
         sourceOfTruth = SourceOfTruth.Companion.of(
             reader = { localDataSource.getAll() },
             writer = { _: String, input: ProjectsResponse ->
-                localDataSource.insert(input.toRow())
+                localDataSource.insert(input.toGroupbuyRow())
             },
             delete = { localDataSource.deleteAll() },
             deleteAll = { localDataSource.deleteAll() }
@@ -42,7 +38,7 @@ class GroupbuyRepositoryImpl @Inject constructor(
         return flow<Result<List<ProjectPreview>>> {
             store.stream(StoreRequest.cached(key = "latest_groupbuy", refresh))
                 .flowOn(Dispatchers.IO)
-                .collect { response: StoreResponse<List<ProjectPreviewRow>> ->
+                .collect { response: StoreResponse<List<GroupbuyPreviewRow>> ->
                     when (response) {
                         is StoreResponse.Loading -> {
                             println("[Store 4] Loading from $response")

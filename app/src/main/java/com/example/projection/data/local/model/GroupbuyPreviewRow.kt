@@ -5,19 +5,18 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.projection.data.remote.model.ProjectPreview
 
-@Entity(tableName = "groupbuy")
-data class ProjectPreviewRow(
+@Entity("groupbuy")
+data class GroupbuyPreviewRow(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "author") val author: String,
     @ColumnInfo(name = "saved") val saved: Boolean
 )
 
-fun List<ProjectPreviewRow>.toProjectPreviewList(): List<ProjectPreview> {
-    return this.map { it.toProjectPreview() }
-}
+fun List<GroupbuyPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =
+    this.map { it.toProjectPreview() }
 
-fun ProjectPreviewRow.toProjectPreview(): ProjectPreview {
+fun GroupbuyPreviewRow.toProjectPreview(): ProjectPreview {
     with(this) {
         return ProjectPreview(
             id = id,
@@ -27,3 +26,11 @@ fun ProjectPreviewRow.toProjectPreview(): ProjectPreview {
         )
     }
 }
+
+fun ProjectPreview.toGroupbuyRow(): GroupbuyPreviewRow =
+    GroupbuyPreviewRow(
+        id = this.id,
+        title = this.title,
+        author = this.author,
+        saved = this.saved
+    )

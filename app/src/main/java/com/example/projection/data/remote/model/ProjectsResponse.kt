@@ -1,11 +1,12 @@
 package com.example.projection.data.remote.model
 
-import com.example.projection.data.local.model.ProjectPreviewRow
+import com.example.projection.data.local.model.GroupbuyPreviewRow
+import com.example.projection.data.local.model.toGroupbuyRow
 
 data class ProjectsResponse(
     val projects: List<ProjectPreview>
 )
 
-fun ProjectsResponse.toRow(): List<ProjectPreviewRow> {
-    return this.projects.map { it.toRow() }
+fun ProjectsResponse.toGroupbuyRow(): List<GroupbuyPreviewRow> {
+    return this.projects.map { it.toGroupbuyRow() }
 }
