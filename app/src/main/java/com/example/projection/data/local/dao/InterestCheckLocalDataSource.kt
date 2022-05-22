@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface InterestCheckLocalDataSource {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(projects: List<InterestCheckPreviewRow>)
 

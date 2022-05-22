@@ -40,7 +40,7 @@ fun ProjectIndexScreen(navController: NavHostController) {
 @Composable
 fun InterestCheckIndexScreen(
     navController: NavHostController,
-    viewModel: GroupbuyIndexViewModel = hiltViewModel()
+    viewModel: InterestCheckIndexViewModel = hiltViewModel()
 ) {
     ProjectList(navController, viewModel)
 }

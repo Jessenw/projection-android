@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
 import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
+import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
 import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.repository.GroupbuyRepositoryImpl
+import com.example.projection.data.repository.InterestCheckRepository
+import com.example.projection.data.repository.InterestCheckRepositoryImpl
 import com.example.projection.utilities.Reachability
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -62,7 +65,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRemoteDataSource(retrofit: Retrofit): GroupbuyRemoteDataSource {
+    fun provideGroupbuyRemoteDataSource(retrofit: Retrofit): GroupbuyRemoteDataSource {
         return retrofit.create(GroupbuyRemoteDataSource::class.java)
     }
 
@@ -73,5 +76,20 @@ object AppModule {
         remoteDataSource: GroupbuyRemoteDataSource,
     ): GroupbuyRepository {
         return GroupbuyRepositoryImpl(database.groupbuyDao(), remoteDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideInterestCheckRemoteDataSource(retrofit: Retrofit): InterestCheckRemoteDataSource {
+        return retrofit.create(InterestCheckRemoteDataSource::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideInterestCheckRepository(
+        database: ProjectionDatabase,
+        remoteDataSource: InterestCheckRemoteDataSource,
+    ): InterestCheckRepository {
+        return InterestCheckRepositoryImpl(database.interestCheckDao(), remoteDataSource)
     }
 }
