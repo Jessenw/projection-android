@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GroupbuyLocalDataSource {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(projects: List<GroupbuyPreviewRow>)
 
