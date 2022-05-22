@@ -5,10 +5,7 @@ import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
 import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
 import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
-import com.example.projection.data.repository.GroupbuyRepository
-import com.example.projection.data.repository.GroupbuyRepositoryImpl
-import com.example.projection.data.repository.InterestCheckRepository
-import com.example.projection.data.repository.InterestCheckRepositoryImpl
+import com.example.projection.data.repository.*
 import com.example.projection.utilities.Reachability
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -91,5 +88,13 @@ object AppModule {
         remoteDataSource: InterestCheckRemoteDataSource,
     ): InterestCheckRepository {
         return InterestCheckRepositoryImpl(database.interestCheckDao(), remoteDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSavedIndexRepository(
+        database: ProjectionDatabase,
+    ): SavedIndexRepository {
+        return SavedIndexRepositoryImpl(database.savedindexDao())
     }
 }
