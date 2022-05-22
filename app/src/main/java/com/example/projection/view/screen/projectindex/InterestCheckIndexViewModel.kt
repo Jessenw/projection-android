@@ -1,11 +1,13 @@
 package com.example.projection.view.screen.projectindex
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import com.example.projection.data.repository.InterestCheckRepository
+import com.example.projection.utilities.Reachability
 import com.example.projection.view.component.viewmodel.ListViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -21,6 +23,7 @@ class InterestCheckIndexViewModel @Inject constructor(
      private val _dataSource = MutableLiveData<Result<List<ProjectPreview>>>()
      override var dataSource: LiveData<Result<List<ProjectPreview>>> = _dataSource
 
+     @SuppressLint("StaticFieldLeak")
      private val context = getApplication<ProjectionApp>().applicationContext
 
      init {
@@ -29,7 +32,8 @@ class InterestCheckIndexViewModel @Inject constructor(
 
      private fun getLatestInterestChecks() {
           viewModelScope.launch {
-               repository.getLatestInterestChecks(false).collect {
+               val refresh = Reachability.isInternetConnected(context)
+               repository.getLatestInterestChecks(refresh).collect {
                     _dataSource.value = it
                     dataSource = _dataSource
                }

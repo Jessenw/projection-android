@@ -1,5 +1,6 @@
 package com.example.projection.view.screen.projectindex
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
@@ -15,13 +16,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GroupbuyIndexViewModel @Inject constructor(
-    private val _application: Application,
+    application: Application,
     private val repository: GroupbuyRepository,
-) : AndroidViewModel(_application), ListViewModel  {
+) : AndroidViewModel(application), ListViewModel  {
 
     private val _dataSource = MutableLiveData<Result<List<ProjectPreview>>>()
     override var dataSource: LiveData<Result<List<ProjectPreview>>> = _dataSource
 
+    @SuppressLint("StaticFieldLeak")
     private val context = getApplication<ProjectionApp>().applicationContext
 
     init {
