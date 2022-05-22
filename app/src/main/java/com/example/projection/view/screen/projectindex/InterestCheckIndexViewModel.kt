@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
-import com.example.projection.data.local.model.GroupbuyPreviewSaved
-import com.example.projection.data.local.model.InterestCheckPreviewSaved
+import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import com.example.projection.data.repository.InterestCheckRepository
@@ -44,7 +43,7 @@ class InterestCheckIndexViewModel @Inject constructor(
 
      override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
           viewModelScope.launch {
-               val savedPreview = InterestCheckPreviewSaved(preview.id, saved)
+               val savedPreview = ProjectPreviewSaved(preview.id, saved)
                repository.updateSaved(savedPreview)
           }
      }

@@ -15,7 +15,7 @@ import javax.inject.Inject
 interface InterestCheckRepository {
     suspend fun getLatestInterestChecks(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
 
-    suspend fun updateSaved(saved: InterestCheckPreviewSaved)
+    suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 
 class InterestCheckRepositoryImpl @Inject constructor(
@@ -61,7 +61,7 @@ class InterestCheckRepositoryImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun updateSaved(saved: InterestCheckPreviewSaved) {
+    override suspend fun updateSaved(saved: ProjectPreviewSaved) {
         localDataSource.updateProjectSaved(saved)
     }
 }

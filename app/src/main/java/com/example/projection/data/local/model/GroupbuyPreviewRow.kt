@@ -13,11 +13,6 @@ data class GroupbuyPreviewRow(
     @ColumnInfo(name = "saved") val saved: Boolean
 )
 
-data class GroupbuyPreviewSaved(
-    val id: String,
-    val saved: Boolean
-)
-
 fun List<GroupbuyPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =
     this.map { it.toProjectPreview() }
 

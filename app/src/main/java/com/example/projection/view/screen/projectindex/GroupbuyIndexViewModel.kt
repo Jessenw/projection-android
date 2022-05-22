@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
-import com.example.projection.data.local.model.GroupbuyPreviewSaved
+import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
@@ -43,7 +43,7 @@ class GroupbuyIndexViewModel @Inject constructor(
 
     override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
         viewModelScope.launch {
-            val savedPreview = GroupbuyPreviewSaved(preview.id, saved)
+            val savedPreview = ProjectPreviewSaved(preview.id, saved)
             repository.updateSaved(savedPreview)
         }
     }

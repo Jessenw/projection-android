@@ -1,7 +1,7 @@
 package com.example.projection.data.repository
 
 import com.example.projection.data.local.dao.SavedIndexLocalDataSource
-import com.example.projection.data.local.model.GroupbuyPreviewSaved
+import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +14,7 @@ import javax.inject.Inject
 interface SavedIndexRepository {
     suspend fun getLatestSaved(): Flow<Result<List<ProjectPreview>>>
 
-    suspend fun updateSaved(saved: GroupbuyPreviewSaved)
+    suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 
 class SavedIndexRepositoryImpl @Inject constructor(
@@ -31,7 +31,7 @@ class SavedIndexRepositoryImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun updateSaved(saved: GroupbuyPreviewSaved) {
+    override suspend fun updateSaved(saved: ProjectPreviewSaved) {
 //        localDataSource.updateProjectSaved(saved)
     }
 }

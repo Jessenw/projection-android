@@ -2,7 +2,7 @@ package com.example.projection.data.local.dao
 
 import androidx.room.*
 import com.example.projection.data.local.model.GroupbuyPreviewRow
-import com.example.projection.data.local.model.GroupbuyPreviewSaved
+import com.example.projection.data.local.model.ProjectPreviewSaved
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,5 +17,5 @@ interface GroupbuyLocalDataSource {
     suspend fun deleteAll()
 
     @Update(GroupbuyPreviewRow::class)
-    suspend fun updateProjectSaved(saved: GroupbuyPreviewSaved)
+    suspend fun updateProjectSaved(saved: ProjectPreviewSaved)
 }

@@ -1,10 +1,7 @@
 package com.example.projection.data.local.dao
 
 import androidx.room.*
-import com.example.projection.data.local.model.GroupbuyPreviewRow
-import com.example.projection.data.local.model.GroupbuyPreviewSaved
-import com.example.projection.data.local.model.InterestCheckPreviewRow
-import com.example.projection.data.local.model.InterestCheckPreviewSaved
+import com.example.projection.data.local.model.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,5 +17,5 @@ interface InterestCheckLocalDataSource {
     suspend fun deleteAll()
 
     @Update(InterestCheckPreviewRow::class)
-    suspend fun updateProjectSaved(saved: InterestCheckPreviewSaved)
+    suspend fun updateProjectSaved(saved: ProjectPreviewSaved)
 }
