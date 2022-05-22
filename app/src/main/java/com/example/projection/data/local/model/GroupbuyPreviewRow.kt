@@ -15,7 +15,7 @@ data class GroupbuyPreviewRow(
 
 data class GroupbuyPreviewSaved(
     val id: String,
-    val saved: Boolean,
+    val saved: Boolean
 )
 
 fun List<GroupbuyPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =

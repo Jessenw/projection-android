@@ -2,8 +2,7 @@ package com.example.projection.data.repository
 
 import com.dropbox.android.external.store4.*
 import com.example.projection.data.local.dao.InterestCheckLocalDataSource
-import com.example.projection.data.local.model.InterestCheckPreviewRow
-import com.example.projection.data.local.model.toProjectPreviewList
+import com.example.projection.data.local.model.*
 import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
 import com.example.projection.data.remote.model.*
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +14,8 @@ import javax.inject.Inject
 
 interface InterestCheckRepository {
     suspend fun getLatestInterestChecks(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
+
+    suspend fun updateSaved(saved: InterestCheckPreviewSaved)
 }
 
 class InterestCheckRepositoryImpl @Inject constructor(
@@ -58,5 +59,9 @@ class InterestCheckRepositoryImpl @Inject constructor(
                     }
                 }
         }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun updateSaved(saved: InterestCheckPreviewSaved) {
+        localDataSource.updateProjectSaved(saved)
     }
 }

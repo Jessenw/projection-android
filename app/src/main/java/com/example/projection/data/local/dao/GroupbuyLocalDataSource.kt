@@ -16,6 +16,6 @@ interface GroupbuyLocalDataSource {
     @Query("DELETE FROM groupbuy")
     suspend fun deleteAll()
 
-    @Update(entity = GroupbuyPreviewRow::class)
+    @Update(GroupbuyPreviewRow::class)
     suspend fun updateProjectSaved(saved: GroupbuyPreviewSaved)
 }

@@ -13,6 +13,11 @@ data class InterestCheckPreviewRow(
     @ColumnInfo(name = "saved") val saved: Boolean
 )
 
+data class InterestCheckPreviewSaved(
+    val id: String,
+    val saved: Boolean
+)
+
 fun List<InterestCheckPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =
     this.map { it.toProjectPreview() }
 
