@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 interface SavedIndexRepository {
     suspend fun getLatestSaved(): Flow<Result<List<ProjectPreview>>>
-
     suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 

@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 interface GroupbuyRepository {
     suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
-
     suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 
