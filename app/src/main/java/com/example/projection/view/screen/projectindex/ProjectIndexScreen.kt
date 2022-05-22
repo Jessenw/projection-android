@@ -6,9 +6,13 @@ import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.projection.R
 import com.example.projection.view.component.ProjectList
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @Composable
 fun ProjectIndexScreen(navController: NavHostController) {
@@ -36,7 +40,7 @@ fun ProjectIndexScreen(navController: NavHostController) {
 @Composable
 fun InterestCheckIndexScreen(
     navController: NavHostController,
-    viewModel: InterestCheckIndexViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: InterestCheckIndexViewModel = hiltViewModel()
 ) {
     ProjectList(navController, viewModel)
 }
@@ -44,7 +48,7 @@ fun InterestCheckIndexScreen(
 @Composable
 fun GroupbuyIndexScreen(
     navController: NavHostController,
-    viewModel: GroupbuyIndexViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: GroupbuyIndexViewModel = hiltViewModel()
 ) {
     ProjectList(navController, viewModel)
 }

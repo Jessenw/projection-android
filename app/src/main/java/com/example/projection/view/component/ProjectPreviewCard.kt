@@ -13,14 +13,17 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.projection.data.model.ProjectPreview
+import com.example.projection.data.remote.model.ProjectPreview
+import com.example.projection.view.component.viewmodel.ListViewModel
 import com.example.projection.view.navigation.Route
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProjectPreviewCard(
     navController: NavHostController,
-    preview: ProjectPreview
+    preview: ProjectPreview,
+    // TODO: Remove this and make a preview viewmodel, everything shouldn't be exposed here
+    viewModel: ListViewModel
 ) {
     Card(
         elevation = 12.dp,
@@ -52,7 +55,10 @@ fun ProjectPreviewCard(
             // Save button
             IconToggleButton(
                 checked = saved,
-                onCheckedChange = { saved = it },
+                onCheckedChange = {
+                    saved = it
+                    viewModel.tappedSave(preview, saved)
+                },
                 modifier = Modifier.requiredWidth(IntrinsicSize.Min)
             ) {
                 val tint by animateColorAsState(

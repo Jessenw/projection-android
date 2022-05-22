@@ -21,9 +21,9 @@ fun ProjectList(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        projects.value?.let {
+        projects.value?.data?.let {
             items(it) { project ->
-                ProjectPreviewCard(navController, project)
+                ProjectPreviewCard(navController, project, viewModel)
             }
         }
     }
