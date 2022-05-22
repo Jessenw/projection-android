@@ -3,6 +3,7 @@ package com.example.projection.data.repository
 import com.dropbox.android.external.store4.*
 import com.example.projection.data.local.dao.GroupbuyLocalDataSource
 import com.example.projection.data.local.model.GroupbuyPreviewRow
+import com.example.projection.data.local.model.GroupbuyPreviewSaved
 import com.example.projection.data.local.model.toProjectPreviewList
 import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
 import com.example.projection.data.remote.model.*
@@ -15,6 +16,8 @@ import javax.inject.Inject
 
 interface GroupbuyRepository {
     suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
+
+    suspend fun updateSaved(saved: GroupbuyPreviewSaved)
 }
 
 class GroupbuyRepositoryImpl @Inject constructor(
@@ -58,5 +61,9 @@ class GroupbuyRepositoryImpl @Inject constructor(
                     }
                 }
         }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun updateSaved(saved: GroupbuyPreviewSaved) {
+        localDataSource.updateProjectSaved(saved)
     }
 }
