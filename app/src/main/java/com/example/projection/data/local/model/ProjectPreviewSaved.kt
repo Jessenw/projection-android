@@ -6,5 +6,6 @@ package com.example.projection.data.local.model
  */
 data class ProjectPreviewSaved(
     val id: String,
+    val type: String?,
     val saved: Boolean
 )

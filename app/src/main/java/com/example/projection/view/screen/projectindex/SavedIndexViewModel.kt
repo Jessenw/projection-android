@@ -1,6 +1,7 @@
 package com.example.projection.view.screen.projectindex
 
 import androidx.lifecycle.*
+import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
@@ -33,6 +34,9 @@ class SavedIndexViewModel @Inject constructor(
     }
 
     override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
-        TODO("Not yet implemented")
+        viewModelScope.launch {
+            val saved = ProjectPreviewSaved(preview.id, preview.type, saved)
+            repository.updateSaved(saved)
+        }
     }
 }

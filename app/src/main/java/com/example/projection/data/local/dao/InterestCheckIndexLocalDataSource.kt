@@ -5,7 +5,7 @@ import com.example.projection.data.local.model.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface InterestCheckLocalDataSource {
+interface InterestCheckIndexLocalDataSource {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(projects: List<InterestCheckPreviewRow>)

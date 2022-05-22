@@ -1,7 +1,7 @@
 package com.example.projection.data.repository
 
 import com.dropbox.android.external.store4.*
-import com.example.projection.data.local.dao.InterestCheckLocalDataSource
+import com.example.projection.data.local.dao.InterestCheckIndexLocalDataSource
 import com.example.projection.data.local.model.*
 import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
 import com.example.projection.data.remote.model.*
@@ -19,7 +19,7 @@ interface InterestCheckRepository {
 }
 
 class InterestCheckRepositoryImpl @Inject constructor(
-    private val localDataSource: InterestCheckLocalDataSource,
+    private val localDataSource: InterestCheckIndexLocalDataSource,
     private val remoteDataSource: InterestCheckRemoteDataSource,
 ) : InterestCheckRepository {
 

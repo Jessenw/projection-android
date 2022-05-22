@@ -1,7 +1,7 @@
 package com.example.projection.data.repository
 
 import com.dropbox.android.external.store4.*
-import com.example.projection.data.local.dao.GroupbuyLocalDataSource
+import com.example.projection.data.local.dao.GroupbuyIndexLocalDataSource
 import com.example.projection.data.local.model.GroupbuyPreviewRow
 import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.local.model.toProjectPreviewList
@@ -21,7 +21,7 @@ interface GroupbuyRepository {
 }
 
 class GroupbuyRepositoryImpl @Inject constructor(
-    private val localDataSource: GroupbuyLocalDataSource,
+    private val localDataSource: GroupbuyIndexLocalDataSource,
     private val remoteDataSource: GroupbuyRemoteDataSource,
 ) : GroupbuyRepository {
 

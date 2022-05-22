@@ -32,6 +32,10 @@ class SavedIndexRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateSaved(saved: ProjectPreviewSaved) {
-//        localDataSource.updateProjectSaved(saved)
+        if (saved.type == "groupbuy") {
+            localDataSource.updateGroupbuySaved(saved)
+        } else if (saved.type == "interest_check") {
+            localDataSource.updateInterestCheckSaved(saved)
+        }
     }
 }

@@ -10,6 +10,7 @@ data class GroupbuyPreviewRow(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "author") val author: String,
+    @ColumnInfo(name = "type", defaultValue = "groupbuy") val type: String,
     @ColumnInfo(name = "saved") val saved: Boolean
 )
 
@@ -22,15 +23,8 @@ fun GroupbuyPreviewRow.toProjectPreview(): ProjectPreview {
             id = id,
             title = title,
             author = author,
+            type = type,
             saved = saved
         )
     }
 }
-
-fun ProjectPreview.toGroupbuyRow(): GroupbuyPreviewRow =
-    GroupbuyPreviewRow(
-        id = this.id,
-        title = this.title,
-        author = this.author,
-        saved = this.saved
-    )

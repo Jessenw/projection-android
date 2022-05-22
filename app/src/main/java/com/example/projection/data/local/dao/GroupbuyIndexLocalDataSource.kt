@@ -6,7 +6,7 @@ import com.example.projection.data.local.model.ProjectPreviewSaved
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface GroupbuyLocalDataSource {
+interface GroupbuyIndexLocalDataSource {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(projects: List<GroupbuyPreviewRow>)
 

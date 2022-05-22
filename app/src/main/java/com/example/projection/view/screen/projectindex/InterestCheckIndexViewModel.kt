@@ -43,7 +43,7 @@ class InterestCheckIndexViewModel @Inject constructor(
 
      override fun tappedSave(preview: ProjectPreview, saved: Boolean) {
           viewModelScope.launch {
-               val savedPreview = ProjectPreviewSaved(preview.id, saved)
+               val savedPreview = ProjectPreviewSaved(preview.id, preview.type, saved)
                repository.updateSaved(savedPreview)
           }
      }
