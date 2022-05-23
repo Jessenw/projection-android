@@ -3,7 +3,7 @@ package com.example.projection.data.repository
 import com.dropbox.android.external.store4.*
 import com.example.projection.data.local.dao.InterestCheckIndexLocalDataSource
 import com.example.projection.data.local.model.*
-import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
+import com.example.projection.data.remote.endpoint.InterestCheckIndexRemoteDataSource
 import com.example.projection.data.remote.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +20,7 @@ interface InterestCheckRepository {
 
 class InterestCheckRepositoryImpl @Inject constructor(
     private val localDataSource: InterestCheckIndexLocalDataSource,
-    private val remoteDataSource: InterestCheckRemoteDataSource,
+    private val remoteDataSource: InterestCheckIndexRemoteDataSource,
 ) : InterestCheckRepository {
 
     private val store: Store<String, List<InterestCheckPreviewRow>> = StoreBuilder.from(

@@ -5,9 +5,9 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.projection.ProjectionApp
 import com.example.projection.data.local.model.ProjectPreviewSaved
-import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
+import com.example.projection.data.repository.GroupbuyIndexRepository
 import com.example.projection.utilities.Reachability
 import com.example.projection.view.component.viewmodel.ListViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GroupbuyIndexViewModel @Inject constructor(
     application: Application,
-    private val repository: GroupbuyRepository,
+    private val repository: GroupbuyIndexRepository,
 ) : AndroidViewModel(application), ListViewModel  {
 
     private val _dataSource = MutableLiveData<Result<List<ProjectPreview>>>()

@@ -3,10 +3,9 @@ package com.example.projection.di
 import android.content.Context
 import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
-import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
-import com.example.projection.data.remote.interestcheck.InterestCheckRemoteDataSource
+import com.example.projection.data.remote.endpoint.GroupbuyIndexRemoteDataSource
+import com.example.projection.data.remote.endpoint.InterestCheckIndexRemoteDataSource
 import com.example.projection.data.repository.*
-import com.example.projection.utilities.Reachability
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -17,7 +16,6 @@ import me.sianaki.flowretrofitadapter.FlowCallAdapterFactory
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -62,30 +60,30 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideGroupbuyRemoteDataSource(retrofit: Retrofit): GroupbuyRemoteDataSource {
-        return retrofit.create(GroupbuyRemoteDataSource::class.java)
+    fun provideGroupbuyRemoteDataSource(retrofit: Retrofit): GroupbuyIndexRemoteDataSource {
+        return retrofit.create(GroupbuyIndexRemoteDataSource::class.java)
     }
 
     @Singleton
     @Provides
     fun provideGroupbuyRepository(
         database: ProjectionDatabase,
-        remoteDataSource: GroupbuyRemoteDataSource,
-    ): GroupbuyRepository {
-        return GroupbuyRepositoryImpl(database.groupbuyDao(), remoteDataSource)
+        remoteDataSource: GroupbuyIndexRemoteDataSource,
+    ): GroupbuyIndexRepository {
+        return GroupbuyIndexRepositoryImpl(database.groupbuyDao(), remoteDataSource)
     }
 
     @Singleton
     @Provides
-    fun provideInterestCheckRemoteDataSource(retrofit: Retrofit): InterestCheckRemoteDataSource {
-        return retrofit.create(InterestCheckRemoteDataSource::class.java)
+    fun provideInterestCheckRemoteDataSource(retrofit: Retrofit): InterestCheckIndexRemoteDataSource {
+        return retrofit.create(InterestCheckIndexRemoteDataSource::class.java)
     }
 
     @Singleton
     @Provides
     fun provideInterestCheckRepository(
         database: ProjectionDatabase,
-        remoteDataSource: InterestCheckRemoteDataSource,
+        remoteDataSource: InterestCheckIndexRemoteDataSource,
     ): InterestCheckRepository {
         return InterestCheckRepositoryImpl(database.interestCheckDao(), remoteDataSource)
     }
@@ -95,6 +93,6 @@ object AppModule {
     fun provideSavedIndexRepository(
         database: ProjectionDatabase,
     ): SavedIndexRepository {
-        return SavedIndexRepositoryImpl(database.savedindexDao())
+        return SavedIndexRepositoryImpl(database.savedIndexDao())
     }
 }

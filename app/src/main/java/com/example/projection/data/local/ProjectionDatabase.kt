@@ -12,5 +12,5 @@ import com.example.projection.data.local.model.InterestCheckPreviewRow
 abstract class ProjectionDatabase : RoomDatabase() {
     abstract fun groupbuyDao(): GroupbuyIndexLocalDataSource
     abstract fun interestCheckDao(): InterestCheckIndexLocalDataSource
-    abstract fun savedindexDao(): SavedIndexLocalDataSource
+    abstract fun savedIndexDao(): SavedIndexLocalDataSource
 }

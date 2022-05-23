@@ -2,7 +2,6 @@ package com.example.projection.view.screen.projectindex
 
 import androidx.lifecycle.*
 import com.example.projection.data.local.model.ProjectPreviewSaved
-import com.example.projection.data.repository.GroupbuyRepository
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import com.example.projection.data.repository.SavedIndexRepository

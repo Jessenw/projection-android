@@ -5,7 +5,7 @@ import com.example.projection.data.local.dao.GroupbuyIndexLocalDataSource
 import com.example.projection.data.local.model.GroupbuyPreviewRow
 import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.local.model.toProjectPreviewList
-import com.example.projection.data.remote.groupbuy.GroupbuyRemoteDataSource
+import com.example.projection.data.remote.endpoint.GroupbuyIndexRemoteDataSource
 import com.example.projection.data.remote.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,15 +14,15 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-interface GroupbuyRepository {
+interface GroupbuyIndexRepository {
     suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
     suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 
-class GroupbuyRepositoryImpl @Inject constructor(
+class GroupbuyIndexRepositoryImpl @Inject constructor(
     private val localDataSource: GroupbuyIndexLocalDataSource,
-    private val remoteDataSource: GroupbuyRemoteDataSource,
-) : GroupbuyRepository {
+    private val remoteDataSource: GroupbuyIndexRemoteDataSource,
+) : GroupbuyIndexRepository {
 
     private val store: Store<String, List<GroupbuyPreviewRow>> = StoreBuilder.from(
         fetcher = Fetcher.ofFlow { remoteDataSource.getLatestGroupbuys() },
