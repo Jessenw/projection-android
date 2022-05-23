@@ -3,6 +3,8 @@ package com.example.projection.di
 import android.content.Context
 import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
+import com.example.projection.data.local.dao.GroupbuyDetailLocalDataSource
+import com.example.projection.data.remote.endpoint.GroupbuyDetailRemoteDataSource
 import com.example.projection.data.remote.endpoint.GroupbuyIndexRemoteDataSource
 import com.example.projection.data.remote.endpoint.InterestCheckIndexRemoteDataSource
 import com.example.projection.data.repository.*
@@ -94,5 +96,19 @@ object AppModule {
         database: ProjectionDatabase,
     ): SavedIndexRepository {
         return SavedIndexRepositoryImpl(database.savedIndexDao())
+    }
+
+    @Singleton
+    @Provides
+    fun provideGroupbuyDetailRemoteDataSource(retrofit: Retrofit): GroupbuyDetailRemoteDataSource {
+        return retrofit.create(GroupbuyDetailRemoteDataSource::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGroupbuyDetailLocalDataSource(
+        database: ProjectionDatabase
+    ): GroupbuyDetailLocalDataSource {
+        return database.groupbuyDetailDao()
     }
 }

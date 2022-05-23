@@ -13,19 +13,9 @@ data class ProjectPreview(
 )
 
 fun ProjectPreview.toGroupbuyRow(): GroupbuyPreviewRow =
-    GroupbuyPreviewRow(
-        id = this.id,
-        title = this.title,
-        author = this.author,
-        type = this.type ?: "groupbuy",
-        saved = this.saved
-    )
+    GroupbuyPreviewRow(id, title, author, type ?: "groupbuy", saved)
 
 fun ProjectPreview.toInterestCheckRow(): InterestCheckPreviewRow =
-    InterestCheckPreviewRow(
-        id = this.id,
-        title = this.title,
-        author = this.author,
-        type = this.type ?: "interest_check",
-        saved = this.saved
-    )
+    InterestCheckPreviewRow(id, title, author, type ?: "interest_check", saved)
+
+

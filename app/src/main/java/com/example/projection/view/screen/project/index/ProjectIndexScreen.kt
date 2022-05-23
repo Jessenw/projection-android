@@ -1,4 +1,4 @@
-package com.example.projection.view.screen.projectindex
+package com.example.projection.view.screen.project.index
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Tab
@@ -7,12 +7,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.projection.R
 import com.example.projection.view.component.ProjectList
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.example.projection.view.screen.project.index.viewmodel.GroupbuyIndexViewModel
+import com.example.projection.view.screen.project.index.viewmodel.InterestCheckIndexViewModel
 
 @Composable
 fun ProjectIndexScreen(navController: NavHostController) {

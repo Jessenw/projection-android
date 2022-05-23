@@ -1,4 +1,4 @@
-package com.example.projection.view.screen.projectindex
+package com.example.projection.view.screen.project.index.viewmodel
 
 import androidx.lifecycle.*
 import com.example.projection.data.local.model.ProjectPreviewSaved

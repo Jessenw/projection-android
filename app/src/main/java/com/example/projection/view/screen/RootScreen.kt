@@ -15,7 +15,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.projection.view.navigation.Route
-import com.example.projection.view.screen.projectindex.ProjectIndexScreen
+import com.example.projection.view.screen.project.detail.ProjectShowScreen
+import com.example.projection.view.screen.project.index.ProjectIndexScreen
 
 @Composable
 fun RootScreen() {

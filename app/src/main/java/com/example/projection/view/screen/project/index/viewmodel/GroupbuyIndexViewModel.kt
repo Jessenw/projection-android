@@ -1,4 +1,4 @@
-package com.example.projection.view.screen.projectindex
+package com.example.projection.view.screen.project.index.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
