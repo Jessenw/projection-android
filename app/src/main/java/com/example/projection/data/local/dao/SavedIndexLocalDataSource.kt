@@ -16,8 +16,8 @@ interface SavedIndexLocalDataSource {
         FROM groupbuy WHERE saved=1
         UNION
         SELECT interest_check.id, interest_check.title, interest_check.author, interest_check.type, interest_check.saved AS saved
-        FROM interest_check WHERE saved=1"""
-    )
+        FROM interest_check WHERE saved=1
+        """)
     fun getAll(): Flow<List<ProjectPreview>>
 
     @Update(GroupbuyPreviewRow::class)
