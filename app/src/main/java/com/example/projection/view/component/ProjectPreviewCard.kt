@@ -28,7 +28,7 @@ fun ProjectPreviewCard(
     Card(
         elevation = 12.dp,
         modifier = Modifier.fillMaxWidth(),
-        onClick = { navController.navigate(Route.ProjectShow.route) }
+        onClick = { navController.navigate(Route.ProjectShow.route + "/${preview.id}") }
     ) {
         var saved by remember { mutableStateOf(preview.saved) }
 

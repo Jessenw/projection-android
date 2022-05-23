@@ -8,10 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.projection.view.navigation.Route
 import com.example.projection.view.screen.projectindex.ProjectIndexScreen
 
@@ -58,7 +60,11 @@ fun RootScreen() {
             Modifier.padding(innerPadding)
         ) {
             composable(Route.ProjectIndex.route) { ProjectIndexScreen(navController) }
-            composable(Route.ProjectShow.route) { ProjectShowScreen(navController) }
+            composable(
+                Route.ProjectShow.route + "/{project_id}",
+                listOf(navArgument("project_id") { NavType.StringType })) {
+                ProjectShowScreen(navController)
+            }
             composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
             composable(Route.Profile.route) { ProfileScreen(navController) }
         }
