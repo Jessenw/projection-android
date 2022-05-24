@@ -1,6 +1,5 @@
 package com.example.projection.view.screen.project.detail
 
-import kotlin.jvm.JvmOverloads
 import android.widget.TextView
 import android.text.Html.ImageGetter
 import com.bumptech.glide.Glide
@@ -14,10 +13,14 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import java.lang.ref.WeakReference
 
-class GlideImageGetter @JvmOverloads constructor(
+/*
+ * Based on code by https://github.com/ddekanski and https://gist.github.com/yrajabi
+ * See: https://gist.github.com/yrajabi/5776f4ade5695009f87ce7fcbc08078f
+ */
+
+class GlideImageGetter(
     textView: TextView,
-    private var matchParentWidth: Boolean = false,
-    densityAware: Boolean = false
+    densityAware: Boolean = true
 ) : ImageGetter {
 
     private val container: WeakReference<TextView>
@@ -25,7 +28,6 @@ class GlideImageGetter @JvmOverloads constructor(
 
     init {
         container = WeakReference(textView)
-        this.matchParentWidth = matchParentWidth
         if (densityAware) {
             density = container.get()!!.resources.displayMetrics.density
         }
@@ -50,7 +52,7 @@ class GlideImageGetter @JvmOverloads constructor(
         var drawable: Drawable? = null
 
         override fun draw(canvas: Canvas) {
-            drawable?.let { it.draw(canvas) }
+            drawable?.draw(canvas)
         }
 
         private fun applyDrawable(drawable: Drawable) {
@@ -60,7 +62,7 @@ class GlideImageGetter @JvmOverloads constructor(
             val drawableHeight = drawable.intrinsicHeight
 
             val maxWidth = container.get()!!.measuredWidth
-            if (drawableWidth > maxWidth || matchParentWidth) {
+            if (drawableWidth > maxWidth) {
                 val calculatedHeight = maxWidth * drawableHeight / drawableWidth
                 drawable.setBounds(0, 0, maxWidth, calculatedHeight)
                 setBounds(0, 0, maxWidth, calculatedHeight)
