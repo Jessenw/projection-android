@@ -29,64 +29,69 @@ class GlideImageGetter(
     init {
         container = WeakReference(textView)
         if (densityAware) {
-            density = container.get()!!.resources.displayMetrics.density
+            container.get()?.let {
+                density = it.resources.displayMetrics.density
+            }
         }
     }
 
     override fun getDrawable(source: String): Drawable {
         val drawable = BitmapDrawablePlaceholder()
-        container.get()!!.post {
-            Glide.with(container.get()!!.context)
-                .asBitmap()
-                .load(source)
-                .into(drawable)
+        container.get()?.apply {
+            post {
+                Glide.with(container.get()!!.context)
+                    .asBitmap()
+                    .load(source)
+                    .into(drawable)
+            }
         }
         return drawable
     }
 
     private inner class BitmapDrawablePlaceholder : BitmapDrawable(
-        container.get()!!.resources,
+        container.get()?.resources,
         Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
     ), Target<Bitmap> {
 
         var drawable: Drawable? = null
+            set(value) {
+                field = value
+                value?.let { drawable ->
+                    val drawableWidth = drawable.intrinsicWidth
+                    val drawableHeight = drawable.intrinsicHeight
+
+                    val maxWidth = container.get()!!.measuredWidth
+                    if (drawableWidth > maxWidth) {
+                        val calculatedHeight = maxWidth * drawableHeight / drawableWidth
+                        drawable.setBounds(0, 0, maxWidth, calculatedHeight)
+                        setBounds(0, 0, maxWidth, calculatedHeight)
+                    } else {
+                        drawable.setBounds(0, 0, drawableWidth, drawableHeight)
+                        setBounds(0, 0, drawableWidth, drawableHeight)
+                    }
+
+                    container.get()?.let { it.text = it.text }
+                }
+            }
 
         override fun draw(canvas: Canvas) {
             drawable?.draw(canvas)
         }
 
-        private fun applyDrawable(drawable: Drawable) {
-            this.drawable = drawable
-
-            val drawableWidth = drawable.intrinsicWidth
-            val drawableHeight = drawable.intrinsicHeight
-
-            val maxWidth = container.get()!!.measuredWidth
-            if (drawableWidth > maxWidth) {
-                val calculatedHeight = maxWidth * drawableHeight / drawableWidth
-                drawable.setBounds(0, 0, maxWidth, calculatedHeight)
-                setBounds(0, 0, maxWidth, calculatedHeight)
-            } else {
-                drawable.setBounds(0, 0, drawableWidth, drawableHeight)
-                setBounds(0, 0, drawableWidth, drawableHeight)
-            }
-            container.get()!!.text = container.get()!!.text
-        }
-
         override fun onLoadStarted(placeholderDrawable: Drawable?) {
-            placeholderDrawable?.let { applyDrawable(it) }
+            placeholderDrawable?.let { drawable = it }
         }
 
         override fun onLoadFailed(errorDrawable: Drawable?) {
-            errorDrawable?.let { applyDrawable(it) }
+            errorDrawable?.let { drawable = it }
         }
 
         override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
-            applyDrawable(BitmapDrawable(container.get()!!.resources, bitmap))
+            drawable = BitmapDrawable(container.get()!!.resources, bitmap)
         }
 
         override fun onLoadCleared(placeholderDrawable: Drawable?) {
-            placeholderDrawable?.let { applyDrawable(it) }
+            placeholderDrawable?.let { drawable = it }
         }
 
         override fun getSize(cb: SizeReadyCallback) {
