@@ -17,15 +17,21 @@ import java.lang.ref.WeakReference
 class GlideImageGetter @JvmOverloads constructor(
     textView: TextView,
     private var matchParentWidth: Boolean = false,
-    densityAware: Boolean = false,
-    private var imagesHandler: HtmlImagesHandler? = null
+    densityAware: Boolean = false
 ) : ImageGetter {
 
     private val container: WeakReference<TextView>
     private var density = 1.0f
 
+    init {
+        container = WeakReference(textView)
+        this.matchParentWidth = matchParentWidth
+        if (densityAware) {
+            density = container.get()!!.resources.displayMetrics.density
+        }
+    }
+
     override fun getDrawable(source: String): Drawable {
-        imagesHandler?.addImage(source)
         val drawable = BitmapDrawablePlaceholder()
         container.get()!!.post {
             Glide.with(container.get()!!.context)
@@ -36,7 +42,7 @@ class GlideImageGetter @JvmOverloads constructor(
         return drawable
     }
 
-    private inner class BitmapDrawablePlaceholder internal constructor() : BitmapDrawable(
+    private inner class BitmapDrawablePlaceholder : BitmapDrawable(
         container.get()!!.resources,
         Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
     ), Target<Bitmap> {
@@ -44,15 +50,15 @@ class GlideImageGetter @JvmOverloads constructor(
         var drawable: Drawable? = null
 
         override fun draw(canvas: Canvas) {
-            if (drawable != null) {
-                drawable!!.draw(canvas)
-            }
+            drawable?.let { it.draw(canvas) }
         }
 
         private fun applyDrawable(drawable: Drawable) {
             this.drawable = drawable
-            val drawableWidth = (drawable.intrinsicWidth * density).toInt()
-            val drawableHeight = (drawable.intrinsicHeight * density).toInt()
+
+            val drawableWidth = drawable.intrinsicWidth
+            val drawableHeight = drawable.intrinsicHeight
+
             val maxWidth = container.get()!!.measuredWidth
             if (drawableWidth > maxWidth || matchParentWidth) {
                 val calculatedHeight = maxWidth * drawableHeight / drawableWidth
@@ -87,25 +93,10 @@ class GlideImageGetter @JvmOverloads constructor(
 
         override fun removeCallback(cb: SizeReadyCallback) {}
         override fun setRequest(request: Request?) {}
-        override fun getRequest(): Request? {
-            return null
-        }
+        override fun getRequest(): Request? = null
 
         override fun onStart() {}
         override fun onStop() {}
         override fun onDestroy() {}
-    }
-
-    interface HtmlImagesHandler {
-        fun addImage(uri: String?)
-    }
-
-    init {
-        container = WeakReference(textView)
-        this.matchParentWidth = matchParentWidth
-        this.imagesHandler = imagesHandler
-        if (densityAware) {
-            density = container.get()!!.resources.displayMetrics.density
-        }
     }
 }
