@@ -11,7 +11,7 @@ interface GroupbuyDetailLocalDataSource {
     suspend fun insert(project: GroupbuyDetailRow)
 
     @Query("""
-        SELECT groupbuy_detail.id, groupbuy_detail.content 
+        SELECT groupbuy_detail.id, groupbuy_detail.title, groupbuy_detail.content 
         FROM groupbuy_detail 
         WHERE groupbuy_detail.id = :projectId
         """)

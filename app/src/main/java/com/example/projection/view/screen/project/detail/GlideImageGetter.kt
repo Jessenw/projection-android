@@ -87,7 +87,7 @@ class GlideImageGetter(
         }
 
         override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
-            drawable = BitmapDrawable(container.get()!!.resources, bitmap)
+            drawable = BitmapDrawable(container.get()?.resources, bitmap)
         }
 
         override fun onLoadCleared(placeholderDrawable: Drawable?) {

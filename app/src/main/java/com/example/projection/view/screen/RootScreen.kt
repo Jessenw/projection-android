@@ -2,8 +2,7 @@ package com.example.projection.view.screen
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -62,9 +61,9 @@ fun RootScreen() {
         ) {
             composable(Route.ProjectIndex.route) { ProjectIndexScreen(navController) }
             composable(
-                Route.ProjectShow.route + "/{project_id}",
+                "${Route.ProjectShow.route}/{project_id}",
                 listOf(navArgument("project_id") { NavType.StringType })) {
-                ProjectShowScreen()
+                ProjectShowScreen(navController)
             }
             composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
             composable(Route.Profile.route) { ProfileScreen(navController) }

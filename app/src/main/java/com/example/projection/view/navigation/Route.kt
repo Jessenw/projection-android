@@ -9,7 +9,11 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.projection.R
 
-sealed class Route(val route: String, @StringRes val resourceId: Int, val icon: ImageVector? = null) {
+sealed class Route(
+    val route: String,
+    @StringRes val resourceId: Int,
+    val icon: ImageVector? = null
+) {
     object Profile : Route("profile", R.string.profile, Icons.Filled.Person)
     object ProjectIndex : Route("project_index", R.string.project_index, Icons.Filled.Home)
     object ProjectShow : Route("project_show", R.string.project_show)
