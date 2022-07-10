@@ -22,7 +22,6 @@ import com.example.projection.view.screen.project.detail.viewmodel.GroupbuyDetai
 
 @Composable
 fun ProjectShowScreen(
-    navController: NavController,
     viewModel: GroupbuyDetailViewModelImpl = hiltViewModel()
 ) {
     val context = LocalContext.current

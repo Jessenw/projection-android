@@ -63,7 +63,7 @@ fun RootScreen() {
             composable(
                 "${Route.ProjectShow.route}/{project_id}",
                 listOf(navArgument("project_id") { NavType.StringType })) {
-                ProjectShowScreen(navController)
+                ProjectShowScreen()
             }
             composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
             composable(Route.Profile.route) { ProfileScreen(navController) }

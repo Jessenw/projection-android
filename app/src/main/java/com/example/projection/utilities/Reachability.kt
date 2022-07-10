@@ -19,6 +19,7 @@ object Reachability {
                     status = true
                 }
             } else {
+                // Fallback on deprecated API for older devices
                 if (manager.activeNetworkInfo != null
                     && manager.activeNetworkInfo!!.isConnectedOrConnecting) {
                     status = true
