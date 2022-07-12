@@ -1,6 +1,7 @@
 package com.example.projection.view.component
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -33,7 +34,9 @@ fun ProjectPreviewCard(
         var saved by remember { mutableStateOf(preview.saved) }
 
         Row(
-            modifier = Modifier.padding(8.dp),
+            modifier = Modifier
+                .background(MaterialTheme.colors.surface)
+                .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Weighting the text column allows the icon to have layout priority
@@ -62,8 +65,8 @@ fun ProjectPreviewCard(
                 modifier = Modifier.requiredWidth(IntrinsicSize.Min)
             ) {
                 val tint by animateColorAsState(
-                    if (saved) Color.Red
-                    else Color.LightGray
+                    if (saved) MaterialTheme.colors.primary
+                    else MaterialTheme.colors.primaryVariant
                 )
                 Icon(
                     if (saved) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,

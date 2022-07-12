@@ -1,5 +1,7 @@
 package com.example.projection.view.screen.project.detail
 
+import android.text.Editable
+import android.text.Html
 import android.widget.TextView
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +21,7 @@ import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.projection.view.screen.project.detail.viewmodel.GroupbuyDetailViewModelImpl
+import org.xml.sax.XMLReader
 
 @Composable
 fun ProjectShowScreen(
@@ -31,7 +34,7 @@ fun ProjectShowScreen(
         Column() {
             TopAppBar(
                 title = { Text(it.title, maxLines = 1) },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.secondary
             )
             Column(
                 Modifier
@@ -56,4 +59,16 @@ fun Html(rawHtml: String) {
             )
         }
     })
+}
+
+class ProjectDetailTagHandler(): Html.TagHandler {
+    override fun handleTag(
+        opening: Boolean,
+        tag: String?,
+        output: Editable?,
+        xmlReader: XMLReader?
+    ) {
+
+    }
+
 }

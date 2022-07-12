@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.ui.Modifier
-import com.example.projection.ui.theme.ProjectionTheme
+import com.example.projection.view.ui.theme.ProjectionTheme
 import com.example.projection.view.screen.RootScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ProjectionTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
