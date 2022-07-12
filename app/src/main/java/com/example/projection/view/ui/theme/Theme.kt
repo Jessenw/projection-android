@@ -9,6 +9,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 @SuppressLint("ConflictingOnColor")
+private val BotanicalColorPalette = lightColors(
+    primary = BotanicalPrimary,
+    primaryVariant = BotanicalPrimary,
+    secondary = BotanicalPrimary,
+    background = BotanicalBackground,
+    surface = BotanicalSurface,
+    onPrimary = BotanicalBackground,
+    onSurface = BotanicalOnSurface
+)
+
+@SuppressLint("ConflictingOnColor")
 private val OliviaColorPalette = lightColors(
     primary = OliviaPrimary,
     primaryVariant = OliviaPrimary,
@@ -22,7 +33,7 @@ private val OliviaColorPalette = lightColors(
 @Composable
 fun ProjectionTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = OliviaColorPalette,
+        colors = BotanicalColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content

@@ -27,7 +27,6 @@ fun ProjectPreviewCard(
     viewModel: ListViewModel
 ) {
     Card(
-        elevation = 12.dp,
         modifier = Modifier.fillMaxWidth(),
         onClick = { navController.navigate(Route.ProjectShow.route + "/${preview.id}") }
     ) {
