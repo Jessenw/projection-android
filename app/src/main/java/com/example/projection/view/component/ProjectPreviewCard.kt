@@ -23,7 +23,7 @@ import com.example.projection.view.navigation.Route
 fun ProjectPreviewCard(
     navController: NavHostController,
     preview: ProjectPreview,
-    // TODO: Remove this and make a preview viewmodel, everything shouldn't be exposed here
+    // TODO: Remove this and make a preview viewModel, everything shouldn't be exposed here
     viewModel: ListViewModel
 ) {
     Card(

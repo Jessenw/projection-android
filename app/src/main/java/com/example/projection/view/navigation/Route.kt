@@ -18,4 +18,5 @@ sealed class Route(
     object ProjectIndex : Route("project_index", R.string.project_index, Icons.Filled.Home)
     object ProjectShow : Route("project_show", R.string.project_show)
     object SavedIndex : Route("saved_index", R.string.saved_index, Icons.Filled.FavoriteBorder)
+    object ThemeIndex : Route("theme_index", R.string.theme_index)
 }

@@ -14,6 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.projection.view.navigation.Route
+import com.example.projection.view.screen.profile.ProfileIndexScreen
 import com.example.projection.view.screen.project.detail.ProjectShowScreen
 import com.example.projection.view.screen.project.index.ProjectIndexScreen
 
@@ -66,7 +67,8 @@ fun RootScreen() {
                 ProjectShowScreen()
             }
             composable(Route.SavedIndex.route) { SavedIndexScreen(navController) }
-            composable(Route.Profile.route) { ProfileScreen(navController) }
+            composable(Route.Profile.route) { ProfileIndexScreen(navController) }
+            composable(Route.ThemeIndex.route) { ThemeIndexScreen(navController) }
         }
     }
 }

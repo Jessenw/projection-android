@@ -20,7 +20,7 @@ private val BotanicalColorPalette = lightColors(
 )
 
 @SuppressLint("ConflictingOnColor")
-private val OliviaColorPalette = lightColors(
+private val OliviaColorPalette = darkColors(
     primary = OliviaPrimary,
     primaryVariant = OliviaPrimary,
     secondary = OliviaPrimary,
