@@ -1,6 +1,9 @@
 package com.example.projection.view.screen.profile
 
 import android.app.Application
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Brush
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,7 +23,7 @@ class ProfileIndexViewModel @Inject constructor(
 
     init {
         _dataSource.value = listOf(
-            SimpleStandardListItemViewModel("Change theme")
+            SimpleStandardListItemViewModel("Change theme", Icons.Filled.Brush, Icons.Filled.ChevronRight)
         )
     }
 }

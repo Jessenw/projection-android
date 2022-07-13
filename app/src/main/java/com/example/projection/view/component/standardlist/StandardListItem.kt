@@ -26,17 +26,19 @@ fun StandardListItem(
         modifier = Modifier
             .background(MaterialTheme.colors.surface)
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .clickable { navController.navigate(Route.ThemeIndex.route) },
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            Icons.Filled.Brush,
-            contentDescription = null,
-            tint = MaterialTheme.colors.primary,
-            modifier = Modifier.padding(start = 8.dp, end = 16.dp)
-        )
+        itemViewModel.startIcon?.let {
+            Icon(
+                it,
+                contentDescription = null,
+                tint = MaterialTheme.colors.primary,
+                modifier = Modifier.padding(end = 16.dp)
+            )
+        }
         Text(
             text = itemViewModel.title,
             style = MaterialTheme.typography.subtitle1,
@@ -45,11 +47,12 @@ fun StandardListItem(
             color = MaterialTheme.colors.onSurface
         )
         Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            Icons.Filled.ChevronRight,
-            contentDescription = null,
-            tint = MaterialTheme.colors.primary,
-            modifier = Modifier.padding(horizontal = 8.dp)
-        )
+        itemViewModel.endIcon?.let {
+            Icon(
+                it,
+                contentDescription = null,
+                tint = MaterialTheme.colors.primary,
+            )
+        }
     }
 }
