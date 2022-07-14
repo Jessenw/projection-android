@@ -27,7 +27,7 @@ fun StandardListItem(
             .background(MaterialTheme.colors.surface)
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clickable { navController.navigate(Route.ThemeIndex.route) },
+            .clickable { itemViewModel.tapped() },
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
