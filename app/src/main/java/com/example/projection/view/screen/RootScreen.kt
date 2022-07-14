@@ -33,7 +33,10 @@ fun RootScreen() {
 
     Scaffold(
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.onPrimary
+            ) {
                 bottomNavItems.forEach { route ->
                     BottomNavigationItem(
                         icon = { route.icon?.let { Icon(it, contentDescription = null) } },

@@ -2,7 +2,6 @@ package com.example.projection.view.ui.theme
 
 import android.annotation.SuppressLint
 import androidx.annotation.StringRes
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -25,6 +24,15 @@ val BotanicalColorPalette = lightColors(
     onSurface = BotanicalOnSurface
 )
 
+val EightOhOhEightPalette = darkColors(
+    primary = EightOhOhEightPrimary,
+    primaryVariant = EightOhOhEightPrimary,
+    secondary = EightOhOhEightPrimary,
+    background = EightOhOhEightBackground,
+    surface = EightOhOhEightSurface,
+    onSurface = EightOhOhEightOnSurface
+)
+
 @SuppressLint("ConflictingOnColor")
 val OliviaColorPalette = darkColors(
     primary = OliviaPrimary,
@@ -41,7 +49,7 @@ fun ProjectionTheme(
     themeService: ThemeService,
     content: @Composable () -> Unit) {
 
-    var scheme = themeService.currentTheme.observeAsState(BotanicalColorPalette)
+    val scheme = themeService.currentTheme.observeAsState(BotanicalColorPalette)
 
     MaterialTheme(
         colors = scheme.value,
@@ -55,9 +63,9 @@ sealed class Palette(
     @StringRes val nameId: Int,
     val color: Colors,
 ) {
-    object OliviaColorScheme: Palette(R.string.olivia_palette, OliviaColorPalette)
-    object BotanicalColorScheme: Palette(R.string.botanical_palette, BotanicalColorPalette)
-
+    object EightOhOhEight: Palette(R.string.eight_oh_oh_eight_palette, EightOhOhEightPalette)
+    object Botanical: Palette(R.string.botanical_palette, BotanicalColorPalette)
+    object Olivia: Palette(R.string.olivia_palette, OliviaColorPalette)
 }
 
 interface ThemeService {

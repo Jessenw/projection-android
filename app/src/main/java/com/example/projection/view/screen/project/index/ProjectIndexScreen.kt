@@ -22,12 +22,21 @@ fun ProjectIndexScreen(navController: NavHostController) {
     val tabTitles = listOf(R.string.groupbuy, R.string.interest_check)
 
     Column(Modifier.background(MaterialTheme.colors.background)) {
-        TabRow(selectedTabIndex = tabSelectedState) {
+        TabRow(
+            selectedTabIndex = tabSelectedState,
+            contentColor = MaterialTheme.colors.onPrimary
+        ) {
             tabTitles.forEachIndexed { index, title ->
                 Tab(
-                    text = { Text(stringResource(title)) },
+                    text = {
+                        Text(
+                            stringResource(title),
+                            color = MaterialTheme.colors.background
+                        )
+                    },
                     selected = tabSelectedState == index,
-                    onClick = { tabSelectedState = index }
+                    onClick = { tabSelectedState = index },
+                    modifier = Modifier.background(MaterialTheme.colors.primary)
                 )
             }
         }

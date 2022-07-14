@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -40,7 +41,7 @@ fun StandardListItem(
             )
         }
         Text(
-            text = itemViewModel.title,
+            text = stringResource(itemViewModel.title),
             style = MaterialTheme.typography.subtitle1,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,

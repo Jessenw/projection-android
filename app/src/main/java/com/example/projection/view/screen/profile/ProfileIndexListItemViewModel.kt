@@ -9,7 +9,7 @@ import com.example.projection.view.navigation.Route
 
 class ProfileIndexListItemViewModel(
     val navController: NavHostController,
-    override val title: String,
+    override val title: Int,
     override val startIcon: ImageVector?,
     override val endIcon: ImageVector? = Icons.Filled.ChevronRight
 ) : StandardListItemViewModel {

@@ -16,4 +16,8 @@
     <!-- Palettes -->
     <string name="olivia_palette">Olivia</string>
     <string name="botanical_palette">Botanical</string>
+    <string name="eight_oh_oh_eight_palette">8008</string>
+
+    <!-- Profile index -->
+    <string name="change_theme_list_item">Change theme</string>
 </resources>

@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.lifecycle.*
 import androidx.navigation.NavHostController
+import com.example.projection.R
 import com.example.projection.view.component.standardlist.SimpleStandardListItemViewModel
 import com.example.projection.view.component.standardlist.StandardListItemViewModel
 import com.example.projection.view.component.standardlist.StandardListViewModel
@@ -25,7 +26,10 @@ class ProfileIndexViewModel @AssistedInject constructor(
 
     init {
         _dataSource.value = listOf(
-            ProfileIndexListItemViewModel(navController, "Change theme", Icons.Filled.Brush),
+            ProfileIndexListItemViewModel(
+                navController,
+                R.string.change_theme_list_item,
+                Icons.Filled.Brush),
         )
     }
 

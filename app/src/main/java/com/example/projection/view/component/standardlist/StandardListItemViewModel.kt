@@ -3,7 +3,7 @@ package com.example.projection.view.component.standardlist
 import androidx.compose.ui.graphics.vector.ImageVector
 
 interface StandardListItemViewModel {
-    val title: String
+    val title: Int
     val startIcon: ImageVector?
     val endIcon: ImageVector?
 
@@ -11,7 +11,7 @@ interface StandardListItemViewModel {
 }
 
 class SimpleStandardListItemViewModel(
-    override val title: String,
+    override val title: Int,
     override val startIcon: ImageVector? = null,
     override val endIcon: ImageVector? = null
 ): StandardListItemViewModel {
