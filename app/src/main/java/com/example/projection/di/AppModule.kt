@@ -8,6 +8,8 @@ import com.example.projection.data.remote.endpoint.GroupbuyDetailRemoteDataSourc
 import com.example.projection.data.remote.endpoint.GroupbuyIndexRemoteDataSource
 import com.example.projection.data.remote.endpoint.InterestCheckIndexRemoteDataSource
 import com.example.projection.data.repository.*
+import com.example.projection.view.ui.theme.ThemeService
+import com.example.projection.view.ui.theme.ThemeServiceImpl
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -110,5 +112,11 @@ object AppModule {
         database: ProjectionDatabase
     ): GroupbuyDetailLocalDataSource {
         return database.groupbuyDetailDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideThemeService(): ThemeService {
+        return ThemeServiceImpl()
     }
 }

@@ -12,4 +12,8 @@
     <string name="project_show">Project</string>
     <string name="saved_index">Saved</string>
     <string name="theme_index">Theme</string>
+
+    <!-- Palettes -->
+    <string name="olivia_palette">Olivia</string>
+    <string name="botanical_palette">Botanical</string>
 </resources>
