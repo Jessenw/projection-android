@@ -14,8 +14,11 @@ import com.example.projection.view.component.standardlist.StandardListItemViewMo
 import com.example.projection.view.component.standardlist.StandardListView
 import com.example.projection.view.component.standardlist.StandardListViewModel
 import com.example.projection.view.ui.theme.Palette
-import com.example.projection.view.ui.theme.ThemeService
+import com.example.projection.view.ui.theme.UserConfigurationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @Composable
@@ -29,7 +32,7 @@ fun ThemeIndexScreen(
 @HiltViewModel
 class ThemeIndexViewModel @Inject constructor(
     application: Application,
-    themeService: ThemeService
+    themeService: UserConfigurationRepository
 ) : AndroidViewModel(application), StandardListViewModel {
 
     private val _dataSource = MutableLiveData<List<StandardListItemViewModel>>()
@@ -45,7 +48,7 @@ class ThemeIndexViewModel @Inject constructor(
 }
 
 class ThemeIndexListItemViewModel(
-    private val themeService: ThemeService,
+    private val themeService: UserConfigurationRepository,
     private val palette: Palette,
 ) : StandardListItemViewModel {
 

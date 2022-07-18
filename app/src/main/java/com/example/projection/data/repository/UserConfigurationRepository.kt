@@ -4,13 +4,13 @@ import androidx.compose.material.Colors
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-interface ThemeService {
+interface UserConfigurationRepository {
     val currentTheme: LiveData<Colors>
 
     fun updateTheme(palette: Palette)
 }
 
-class ThemeServiceImpl : ThemeService {
+class UserConfigurationRepositoryImpl : UserConfigurationRepository {
     private val _currentTheme = MutableLiveData<Colors>()
     override var currentTheme: LiveData<Colors> = _currentTheme
 
