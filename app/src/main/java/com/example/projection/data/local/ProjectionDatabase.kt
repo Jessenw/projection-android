@@ -2,24 +2,25 @@ package com.example.projection.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.projection.data.local.dao.GroupbuyDetailLocalDataSource
-import com.example.projection.data.local.dao.GroupbuyIndexLocalDataSource
-import com.example.projection.data.local.dao.InterestCheckIndexLocalDataSource
-import com.example.projection.data.local.dao.SavedIndexLocalDataSource
+import com.example.projection.data.local.dao.*
 import com.example.projection.data.local.model.GroupbuyDetailRow
 import com.example.projection.data.local.model.GroupbuyPreviewRow
 import com.example.projection.data.local.model.InterestCheckPreviewRow
+import com.example.projection.data.local.model.UserConfigurationRow
 
 @Database(
     entities = [
         GroupbuyPreviewRow::class,
         InterestCheckPreviewRow::class,
-        GroupbuyDetailRow::class
+        GroupbuyDetailRow::class,
+        UserConfigurationRow::class
     ],
-    version = 1)
+    version = 4
+)
 abstract class ProjectionDatabase : RoomDatabase() {
     abstract fun groupbuyDao(): GroupbuyIndexLocalDataSource
     abstract fun interestCheckDao(): InterestCheckIndexLocalDataSource
     abstract fun savedIndexDao(): SavedIndexLocalDataSource
     abstract fun groupbuyDetailDao(): GroupbuyDetailLocalDataSource
+    abstract fun userConfigurationDao(): UserConfigurationLocalDataSource
 }

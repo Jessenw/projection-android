@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GroupbuyDetailLocalDataSource {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(project: GroupbuyDetailRow)
 

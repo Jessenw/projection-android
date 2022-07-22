@@ -10,11 +10,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavHostController
+import com.example.projection.data.local.model.UserConfigurationRow
+import com.example.projection.data.local.model.UserConfigurationTheme
+import com.example.projection.data.remote.model.UserConfiguration
 import com.example.projection.view.component.standardlist.StandardListItemViewModel
 import com.example.projection.view.component.standardlist.StandardListView
 import com.example.projection.view.component.standardlist.StandardListViewModel
 import com.example.projection.view.ui.theme.Palette
-import com.example.projection.view.ui.theme.UserConfigurationRepository
+import com.example.projection.data.repository.UserConfigurationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +35,7 @@ fun ThemeIndexScreen(
 @HiltViewModel
 class ThemeIndexViewModel @Inject constructor(
     application: Application,
-    themeService: UserConfigurationRepository
+    repository: UserConfigurationRepository
 ) : AndroidViewModel(application), StandardListViewModel {
 
     private val _dataSource = MutableLiveData<List<StandardListItemViewModel>>()
@@ -40,15 +43,15 @@ class ThemeIndexViewModel @Inject constructor(
 
     init {
         _dataSource.value = listOf(
-            ThemeIndexListItemViewModel(themeService, Palette.Botanical),
-            ThemeIndexListItemViewModel(themeService, Palette.EightOhOhEight),
-            ThemeIndexListItemViewModel(themeService, Palette.Olivia),
+            ThemeIndexListItemViewModel(repository, Palette.Botanical),
+            ThemeIndexListItemViewModel(repository, Palette.EightOhOhEight),
+            ThemeIndexListItemViewModel(repository, Palette.Olivia),
         )
     }
 }
 
 class ThemeIndexListItemViewModel(
-    private val themeService: UserConfigurationRepository,
+    private val repository: UserConfigurationRepository,
     private val palette: Palette,
 ) : StandardListItemViewModel {
 
@@ -57,7 +60,10 @@ class ThemeIndexListItemViewModel(
     override val endIcon: ImageVector = Icons.Filled.RadioButtonUnchecked
 
     override fun tapped() {
-        themeService.updateTheme(palette)
+        CoroutineScope(Dispatchers.IO).launch {
+            val configurationTheme = UserConfiguration("1001", palette.nameId)
+            repository.updateTheme(configurationTheme)
+        }
     }
 }
 

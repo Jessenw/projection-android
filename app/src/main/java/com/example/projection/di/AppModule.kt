@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import com.example.projection.data.local.ProjectionDatabase
 import com.example.projection.data.local.dao.GroupbuyDetailLocalDataSource
+import com.example.projection.data.local.dao.UserConfigurationLocalDataSource
 import com.example.projection.data.remote.endpoint.GroupbuyDetailRemoteDataSource
 import com.example.projection.data.remote.endpoint.GroupbuyIndexRemoteDataSource
 import com.example.projection.data.remote.endpoint.InterestCheckIndexRemoteDataSource
 import com.example.projection.data.repository.*
-import com.example.projection.view.ui.theme.ThemeService
-import com.example.projection.view.ui.theme.ThemeServiceImpl
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -116,7 +115,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideThemeService(): ThemeService {
-        return ThemeServiceImpl()
+    fun provideUserConfigurationRepository(
+        database: ProjectionDatabase
+    ): UserConfigurationRepository {
+        return UserConfigurationRepositoryImpl(database.userConfigurationDao())
     }
 }
