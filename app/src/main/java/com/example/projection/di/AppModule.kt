@@ -73,7 +73,7 @@ object AppModule {
         database: ProjectionDatabase,
         remoteDataSource: GroupbuyIndexRemoteDataSource,
     ): GroupbuyIndexRepository {
-        return GroupbuyIndexRepositoryImpl(database.groupbuyDao(), remoteDataSource)
+        return GroupbuyIndexRepositoryImpl(database.groupbuyIndexDao(), remoteDataSource)
     }
 
     @Singleton
@@ -88,7 +88,7 @@ object AppModule {
         database: ProjectionDatabase,
         remoteDataSource: InterestCheckIndexRemoteDataSource,
     ): InterestCheckRepository {
-        return InterestCheckRepositoryImpl(database.interestCheckDao(), remoteDataSource)
+        return InterestCheckRepositoryImpl(database.interestCheckIndexDao(), remoteDataSource)
     }
 
     @Singleton
