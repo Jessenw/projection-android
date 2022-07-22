@@ -7,11 +7,11 @@ import com.example.projection.data.remote.model.ProjectPreview
 
 @Entity("interest_check")
 data class InterestCheckPreviewRow(
-    @PrimaryKey @ColumnInfo(name = "id") val id: String,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "author") val author: String,
-    @ColumnInfo(name = "type", defaultValue = "interest_check") val type: String,
-    @ColumnInfo(name = "saved") val saved: Boolean
+    @PrimaryKey @ColumnInfo val id: String,
+    @ColumnInfo val title: String,
+    @ColumnInfo val author: String,
+    @ColumnInfo(defaultValue = "interest_check") val type: String,
+    @ColumnInfo val saved: Boolean
 )
 
 fun List<InterestCheckPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =

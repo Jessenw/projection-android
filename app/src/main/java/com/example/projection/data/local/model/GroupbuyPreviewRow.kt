@@ -7,11 +7,11 @@ import com.example.projection.data.remote.model.ProjectPreview
 
 @Entity("groupbuy")
 data class GroupbuyPreviewRow(
-    @PrimaryKey @ColumnInfo(name = "id") val id: String,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "author") val author: String,
-    @ColumnInfo(name = "type", defaultValue = "groupbuy") val type: String,
-    @ColumnInfo(name = "saved") val saved: Boolean
+    @PrimaryKey @ColumnInfo val id: String,
+    @ColumnInfo val title: String,
+    @ColumnInfo val author: String,
+    @ColumnInfo(defaultValue = "groupbuy") val type: String,
+    @ColumnInfo val saved: Boolean
 )
 
 fun List<GroupbuyPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =

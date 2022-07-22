@@ -7,8 +7,8 @@ import com.example.projection.data.remote.model.UserConfiguration
 
 @Entity(tableName = "user_configuration")
 data class UserConfigurationRow(
-    @PrimaryKey @ColumnInfo(name = "id") val id: String,
-    @ColumnInfo(name = "theme") val theme: Int
+    @PrimaryKey @ColumnInfo val id: String,
+    @ColumnInfo val theme: Int
 )
 
 /**
