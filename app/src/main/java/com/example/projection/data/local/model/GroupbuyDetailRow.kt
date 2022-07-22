@@ -12,8 +12,5 @@ data class GroupbuyDetailRow(
     @ColumnInfo val content: String
 )
 
-fun GroupbuyDetailRow.toProjectDetail(): ProjectDetail {
-    with(this) {
-        return ProjectDetail(id, title, content)
-    }
-}
+fun GroupbuyDetailRow.toProjectDetail() =
+    ProjectDetail(id, title, content)

@@ -14,17 +14,14 @@ data class GroupbuyPreviewRow(
     @ColumnInfo val saved: Boolean
 )
 
-fun List<GroupbuyPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =
+fun List<GroupbuyPreviewRow>.toProjectPreviewList() =
     this.map { it.toProjectPreview() }
 
-fun GroupbuyPreviewRow.toProjectPreview(): ProjectPreview {
-    with(this) {
-        return ProjectPreview(
-            id = id,
-            title = title,
-            author = author,
-            type = type,
-            saved = saved
-        )
-    }
-}
+fun GroupbuyPreviewRow.toProjectPreview() =
+    ProjectPreview(
+        id = id,
+        title = title,
+        author = author,
+        type = type,
+        saved = saved
+    )

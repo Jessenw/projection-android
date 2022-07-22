@@ -17,14 +17,11 @@ data class InterestCheckPreviewRow(
 fun List<InterestCheckPreviewRow>.toProjectPreviewList(): List<ProjectPreview> =
     this.map { it.toProjectPreview() }
 
-fun InterestCheckPreviewRow.toProjectPreview(): ProjectPreview {
-    with(this) {
-        return ProjectPreview(
-            id = id,
-            title = title,
-            author = author,
-            type = type,
-            saved = saved
-        )
-    }
-}
+fun InterestCheckPreviewRow.toProjectPreview() =
+    ProjectPreview(
+        id = id,
+        title = title,
+        author = author,
+        type = type,
+        saved = saved
+    )

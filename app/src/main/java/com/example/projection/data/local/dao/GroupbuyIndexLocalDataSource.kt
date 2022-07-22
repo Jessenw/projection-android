@@ -7,7 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GroupbuyIndexLocalDataSource {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+
+    // TODO: This will cause a loss of saved data onConflicts
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(projects: List<GroupbuyPreviewRow>)
 
     @Query("SELECT * FROM groupbuy")

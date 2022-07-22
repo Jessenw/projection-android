@@ -20,6 +20,5 @@ data class UserConfigurationTheme(
     val theme: Int
 )
 
-fun UserConfigurationRow.toUserConfiguration(): UserConfiguration {
-    return UserConfiguration(id, theme)
-}
+fun UserConfigurationRow.toUserConfiguration() =
+    UserConfiguration(id, theme)

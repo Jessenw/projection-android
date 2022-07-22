@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface InterestCheckIndexLocalDataSource {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(projects: List<InterestCheckPreviewRow>)
 
     @Query("SELECT * FROM interest_check")
