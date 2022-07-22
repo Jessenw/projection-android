@@ -2,10 +2,8 @@ package com.example.projection.data.repository
 
 import com.example.projection.data.local.dao.UserConfigurationLocalDataSource
 import com.example.projection.data.local.model.UserConfigurationRow
-import com.example.projection.data.local.model.UserConfigurationTheme
 import com.example.projection.data.local.model.toUserConfiguration
 import com.example.projection.data.remote.model.UserConfiguration
-import com.example.projection.view.ui.theme.BotanicalColorPalette
 import com.example.projection.view.ui.theme.Palette
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -29,9 +27,10 @@ class UserConfigurationRepositoryImpl @Inject constructor(
             localDataSource.getUserConfiguration("1001")
                 .flowOn(Dispatchers.IO)
                 .collect { row: UserConfigurationRow ->
-                    // TODO: This is likely null, since userConfiguration will
-                    // be determined by the authenticated user. For now, if there's
-                    // no configuration row, just create one
+                    /* TODO: This is likely null, since userConfiguration will
+                     * be determined by the authenticated user. For now, if there's
+                     * no configuration row, just create one
+                     */
                     if (row == null) {
                         localDataSource.insert(UserConfigurationRow("1001", Palette.EightOhOhEight.nameId))
                     } else {

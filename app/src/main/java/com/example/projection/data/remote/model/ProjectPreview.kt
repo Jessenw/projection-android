@@ -3,7 +3,6 @@ package com.example.projection.data.remote.model
 import com.example.projection.data.local.model.GroupbuyPreviewRow
 import com.example.projection.data.local.model.InterestCheckPreviewRow
 
-/** A generic representation of a project preview */
 data class ProjectPreview(
     val id: String,
     val title: String,

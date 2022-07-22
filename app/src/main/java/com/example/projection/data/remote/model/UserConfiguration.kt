@@ -6,6 +6,3 @@ data class UserConfiguration(
     val id: String,
     val theme: Int
 )
-
-fun UserConfiguration.toRow() =
-    UserConfigurationRow(id, theme)

@@ -12,15 +12,14 @@ data class Result<T>(val status: Int, val data: T?) {
         private const val STATUS_SUCCESS = 1
         private const val STATUS_ERROR = -1
 
-        /**
-         * Helper method to create fresh state result
-         */
+        /** Helper method to create fresh state result. */
         fun <T> success(@NonNull data: T): Result<T> {
             return Result(STATUS_SUCCESS, data)
         }
 
         /**
-         * Helper method to create error state Result. Error state might also have the current data, if any
+         * Helper method to create error state Result. Error state might also have the
+         * current data, if any.
          */
         fun <T> error(item: T? = null): Result<T> {
             return Result(STATUS_ERROR, item)

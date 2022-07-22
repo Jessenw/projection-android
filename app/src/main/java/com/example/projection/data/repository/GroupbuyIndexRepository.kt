@@ -16,6 +16,7 @@ import javax.inject.Inject
 
 interface GroupbuyIndexRepository {
     suspend fun getLatestGroupbuys(refresh: Boolean): Flow<Result<List<ProjectPreview>>>
+
     suspend fun updateSaved(saved: ProjectPreviewSaved)
 }
 
@@ -52,7 +53,6 @@ class GroupbuyIndexRepositoryImpl @Inject constructor(
                         }
                         is StoreResponse.Data -> {
                             val data = response.value.toProjectPreviewList()
-                            println("[Store 4] Data from ${response.origin} with ${response.value.size} elements")
                             println("[Store 4] Data: $response")
                             emit(Result.success(data))
                         }

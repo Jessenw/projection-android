@@ -21,11 +21,6 @@ interface GroupbuyDetailRepository {
     suspend fun getGroupbuy(refresh: Boolean): Flow<Result<ProjectDetail>>
 }
 
-@AssistedFactory
-interface GroupbuyDetailRepositoryFactory {
-    fun create(projectId: String): GroupbuyDetailRepositoryImpl
-}
-
 class GroupbuyDetailRepositoryImpl @AssistedInject constructor(
     private val localDataSource: GroupbuyDetailLocalDataSource,
     private val remoteDataSource: GroupbuyDetailRemoteDataSource,
@@ -67,4 +62,9 @@ class GroupbuyDetailRepositoryImpl @AssistedInject constructor(
                 }
         }.flowOn(Dispatchers.IO)
     }
+}
+
+@AssistedFactory
+interface GroupbuyDetailRepositoryFactory {
+    fun create(projectId: String): GroupbuyDetailRepositoryImpl
 }

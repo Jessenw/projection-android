@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface GroupbuyDetailRemoteDataSource {
+
     @GET("groupbuy/{project_id}")
     fun getGroupbuy(@Path("project_id") projectId: String): Flow<ProjectDetail>
 }
