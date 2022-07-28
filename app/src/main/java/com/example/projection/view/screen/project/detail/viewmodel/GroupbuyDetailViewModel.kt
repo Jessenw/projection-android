@@ -33,9 +33,6 @@ class GroupbuyDetailViewModelImpl @Inject constructor(
     private val context = getApplication<ProjectionApp>().applicationContext
 
     init {
-        println("SavedStateHandle > Keys ${savedStateHandle.keys()}")
-        println("SavedStateHandle > project_id ${savedStateHandle.get<String>("project_id") }")
-
         val projectId = savedStateHandle.get<String>("project_id")
         projectId?.let { repository = repositoryFactory.create(projectId) }
 

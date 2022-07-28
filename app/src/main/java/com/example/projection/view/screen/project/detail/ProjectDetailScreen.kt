@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.projection.view.screen.project.detail.viewmodel.GroupbuyDetailViewModelImpl
 import org.xml.sax.XMLReader
 
