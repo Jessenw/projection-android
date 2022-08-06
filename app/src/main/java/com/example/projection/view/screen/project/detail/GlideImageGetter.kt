@@ -19,20 +19,13 @@ import java.lang.ref.WeakReference
  */
 
 class GlideImageGetter(
-    textView: TextView,
-    densityAware: Boolean = true
+    textView: TextView
 ) : ImageGetter {
 
     private val container: WeakReference<TextView>
-    private var density = 1.0f
 
     init {
         container = WeakReference(textView)
-        if (densityAware) {
-            container.get()?.let {
-                density = it.resources.displayMetrics.density
-            }
-        }
     }
 
     override fun getDrawable(source: String): Drawable {
