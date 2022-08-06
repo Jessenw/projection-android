@@ -44,7 +44,8 @@ fun ProjectShowScreen(
 
 @Composable
 fun Html(rawHtml: String) {
-    val color = MaterialTheme.colors.onSurface
+    val primaryColor = MaterialTheme.colors.primary.toArgb()
+    val onSurfaceColor = MaterialTheme.colors.onSurface.toArgb()
     AndroidView({ context ->
         TextView(context).apply {
             text = HtmlCompat.fromHtml(
@@ -56,6 +57,8 @@ fun Html(rawHtml: String) {
         }
     },
     update = {
-        it.setTextColor(color.toArgb())
+        it.setTextColor(onSurfaceColor)
+        it.setLinkTextColor(primaryColor)
+        it.setHintTextColor(primaryColor)
     })
 }
