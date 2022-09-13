@@ -17,6 +17,7 @@ import com.example.projection.view.navigation.Route
 import com.example.projection.view.screen.profile.ProfileIndexScreen
 import com.example.projection.view.screen.project.detail.ProjectShowScreen
 import com.example.projection.view.screen.project.index.ProjectIndexScreen
+import com.example.projection.view.screen.themeindex.ThemeIndexScreen
 
 @Composable
 fun RootScreen() {
