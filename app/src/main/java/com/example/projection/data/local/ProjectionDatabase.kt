@@ -15,7 +15,8 @@ import com.example.projection.data.local.model.UserConfigurationRow
         GroupbuyDetailRow::class,
         UserConfigurationRow::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class ProjectionDatabase : RoomDatabase() {
     abstract fun groupbuyIndexDao(): GroupbuyIndexLocalDataSource

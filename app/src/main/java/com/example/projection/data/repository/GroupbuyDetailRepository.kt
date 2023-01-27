@@ -58,6 +58,7 @@ class GroupbuyDetailRepositoryImpl @AssistedInject constructor(
                             println("[Store 4] Data: $response")
                             emit(Result.success(data))
                         }
+                        else -> { /* Nop */ }
                     }
                 }
         }.flowOn(Dispatchers.IO)
