@@ -1,10 +1,14 @@
 package com.example.projection.view.screen
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
@@ -35,8 +39,16 @@ fun RootScreen() {
     Scaffold(
         bottomBar = {
             BottomNavigation(
-                backgroundColor = MaterialTheme.colors.primary,
-                contentColor = MaterialTheme.colors.onPrimary
+                backgroundColor = MaterialTheme.colors.background,
+                contentColor = MaterialTheme.colors.primary,
+                elevation = 0.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .graphicsLayer {
+                        clip = true
+                        shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp)
+                        shadowElevation = 48f
+                    }
             ) {
                 bottomNavItems.forEach { route ->
                     BottomNavigationItem(
