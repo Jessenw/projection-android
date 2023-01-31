@@ -6,8 +6,8 @@ import androidx.compose.material.icons.filled.RadioButtonUnchecked
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.projection.data.remote.model.UserConfiguration
 import com.example.projection.data.repository.UserConfigurationRepository
-import com.example.projection.view.component.standardlist.StandardListItemViewModel
-import com.example.projection.view.component.standardlist.ToggleIconViewModel
+import com.example.projection.view.components.standardlist.StandardListItemViewModel
+import com.example.projection.view.components.standardlist.ToggleIconViewModel
 import com.example.projection.view.ui.theme.Palette
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

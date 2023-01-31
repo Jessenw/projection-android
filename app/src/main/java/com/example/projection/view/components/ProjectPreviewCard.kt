@@ -1,4 +1,4 @@
-package com.example.projection.view.component
+package com.example.projection.view.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
@@ -9,13 +9,12 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.projection.data.remote.model.ProjectPreview
-import com.example.projection.view.component.viewmodel.ListViewModel
+import com.example.projection.view.components.viewmodel.ListViewModel
 import com.example.projection.view.navigation.Route
 
 @OptIn(ExperimentalMaterialApi::class)

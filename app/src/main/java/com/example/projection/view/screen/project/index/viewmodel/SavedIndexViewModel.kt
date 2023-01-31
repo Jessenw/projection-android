@@ -5,9 +5,8 @@ import com.example.projection.data.local.model.ProjectPreviewSaved
 import com.example.projection.data.remote.model.ProjectPreview
 import com.example.projection.data.remote.model.Result
 import com.example.projection.data.repository.SavedIndexRepository
-import com.example.projection.view.component.viewmodel.ListViewModel
+import com.example.projection.view.components.viewmodel.ListViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

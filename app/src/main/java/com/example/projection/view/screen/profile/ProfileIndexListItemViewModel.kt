@@ -4,8 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
-import com.example.projection.view.component.standardlist.StandardListItemViewModel
-import com.example.projection.view.component.standardlist.ToggleIconViewModel
+import com.example.projection.view.components.standardlist.StandardListItemViewModel
+import com.example.projection.view.components.standardlist.ToggleIconViewModel
 import com.example.projection.view.navigation.Route
 
 class ProfileIndexListItemViewModel(

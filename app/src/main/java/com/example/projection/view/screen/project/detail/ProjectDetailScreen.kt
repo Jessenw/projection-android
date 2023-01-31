@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -18,6 +16,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.projection.view.screen.project.detail.viewmodel.GroupbuyDetailViewModelImpl
+import com.example.projection.view.screen.project.index.TopAppBarScreen
 
 @Composable
 fun ProjectShowScreen(
@@ -25,18 +24,14 @@ fun ProjectShowScreen(
 ) {
     val project = viewModel.dataSource.observeAsState()
 
-    project.value?.data?.let {
-        Column {
-            TopAppBar(
-                title = { Text(it.title, maxLines = 1) },
-                backgroundColor = MaterialTheme.colors.secondary
-            )
+    project.value?.data?.let { data ->
+        TopAppBarScreen(title = data.title) {
             Column(
                 Modifier
                     .verticalScroll(rememberScrollState())
                     .padding(PaddingValues(horizontal = 16.dp, vertical = 8.dp))
             ) {
-                Html(it.content)
+                Html(data.content)
             }
         }
     }

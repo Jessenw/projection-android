@@ -1,4 +1,4 @@
-package com.example.projection.view.component.viewmodel
+package com.example.projection.view.components.viewmodel
 
 import androidx.lifecycle.LiveData
 import com.example.projection.data.remote.model.ProjectPreview

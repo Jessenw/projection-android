@@ -6,8 +6,8 @@ import androidx.compose.material.icons.filled.Brush
 import androidx.lifecycle.*
 import androidx.navigation.NavHostController
 import com.example.projection.R
-import com.example.projection.view.component.standardlist.StandardListItemViewModel
-import com.example.projection.view.component.standardlist.StandardListViewModel
+import com.example.projection.view.components.standardlist.StandardListItemViewModel
+import com.example.projection.view.components.standardlist.StandardListViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject

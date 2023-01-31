@@ -1,4 +1,4 @@
-package com.example.projection.view.component.standardlist
+package com.example.projection.view.components.standardlist
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
