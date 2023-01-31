@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.projection.view.components.ProjectList
+import com.example.projection.view.components.TopAppBarScreen
 import com.example.projection.view.navigation.Route
-import com.example.projection.view.screen.project.index.TopAppBarScreen
 import com.example.projection.view.screen.project.index.viewmodel.SavedIndexViewModel
 
 @Composable

@@ -6,9 +6,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.projection.di.ViewModelFactoryModule
+import com.example.projection.view.components.TopAppBarScreen
 import com.example.projection.view.components.standardlist.StandardListView
 import com.example.projection.view.navigation.Route
-import com.example.projection.view.screen.project.index.TopAppBarScreen
 import dagger.hilt.android.EntryPointAccessors
 
 @Composable

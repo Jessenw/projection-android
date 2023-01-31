@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.projection.view.components.TopAppBarScreen
 import com.example.projection.view.screen.project.detail.viewmodel.GroupbuyDetailViewModelImpl
-import com.example.projection.view.screen.project.index.TopAppBarScreen
 
 @Composable
 fun ProjectShowScreen(
