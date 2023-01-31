@@ -40,15 +40,7 @@ fun RootScreen() {
         bottomBar = {
             BottomNavigation(
                 backgroundColor = MaterialTheme.colors.background,
-                contentColor = MaterialTheme.colors.primary,
-                elevation = 0.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .graphicsLayer {
-                        clip = true
-                        shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp)
-                        shadowElevation = 48f
-                    }
+                contentColor = MaterialTheme.colors.primary
             ) {
                 bottomNavItems.forEach { route ->
                     BottomNavigationItem(
